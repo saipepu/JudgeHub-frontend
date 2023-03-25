@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import Login from './Pages/Login'
+import PageNotFound from './Pages/PageNotFound'
+import ScoringPage from './Pages/ScoringPage'
+import Leaderboard from './Pages/Leaderboard'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="App">
+        <HashRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/scoringPage" element={<ScoringPage />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </HashRouter>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
