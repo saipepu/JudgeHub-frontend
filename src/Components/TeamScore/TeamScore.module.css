@@ -67,7 +67,7 @@
     font-size: 20px;
   }
   .fund_ct > p {
-    font-size: 22px;
+    font: 500 20px Prompt;
   }
   .ddi_dollar > svg {
     width: 18px;
