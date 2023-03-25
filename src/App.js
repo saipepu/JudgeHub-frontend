@@ -7,10 +7,10 @@ import Leaderboard from './Pages/Leaderboard'
 
 const App = () => {
 
-  function preventDefault(e) {
-    e.preventDefault();
-  }
-  document.body.addEventListener('touchmove', preventDefault, {passive: false})
+  // function preventDefault(e) {
+  //   e.preventDefault();
+  // }
+  // document.body.addEventListener('touchmove', preventDefault, {passive: false})
 
   return (
     <>
