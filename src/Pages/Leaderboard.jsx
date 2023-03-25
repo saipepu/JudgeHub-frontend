@@ -10,7 +10,10 @@ import BannerTop10 from '../Components/Banner_Top10/BannerTop10'
 import { teamList } from '../data/teamList'
 
 const Leaderboard = () => {
-  
+
+  teamList.sort((a,b) => parseInt(b.fund.split(',').join('')) - parseInt(a.fund.split(',').join('')))
+  console.log(teamList);
+
   let count = 1;
   let Top10 = [];
   let TheRest = [];
@@ -21,8 +24,6 @@ const Leaderboard = () => {
       TheRest.push(teamList[i])
     }
   }
-  console.log(Top10);
-  console.log(TheRest);
 
   return (
     <div className={styles.container}>
@@ -91,7 +92,7 @@ const Leaderboard = () => {
               } else {
                 count = 1;
               }
-              if(item.fund > 0) {
+              if(parseInt(item.fund.split(',').join('')) > 0) {
                 return (
                   <BannerSecondary rank={rank} name={item.name} fund={item.fund}/>
                 )

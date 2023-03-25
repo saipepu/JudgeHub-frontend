@@ -9,7 +9,7 @@ export const teamList = [
   },
   {
     name: 'Kripz',
-    fund: '8,000,000'
+    fund: '0'
   },
   {
     name: 'Zeri',
@@ -17,7 +17,7 @@ export const teamList = [
   },
   {
     name: 'Profries',
-    fund: '6,905,000'
+    fund: '0'
   },
   {
     name: 'Haly Bake',
@@ -25,7 +25,7 @@ export const teamList = [
   },
   {
     name: 'Fragante',
-    fund: '6,905,000'
+    fund: '0'
   },
   {
     name: 'K\'otton',
@@ -69,7 +69,7 @@ export const teamList = [
   },
   {
     name: 'Yeobo',
-    fund: '0'
+    fund: '10,000'
   },
   {
     name: 'Frescas',
@@ -77,15 +77,15 @@ export const teamList = [
   },
   {
     name: 'Giadina',
-    fund: '0'
+    fund: '100,000'
   },
   {
     name: 'CoGrow',
-    fund: '0'
+    fund: '50,000'
   },
   {
     name: 'Wastic',
-    fund: '0'
+    fund: '9,900,000'
   },
   {
     name: 'Fizzle',
