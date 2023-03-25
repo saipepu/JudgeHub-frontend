@@ -49,23 +49,25 @@ const ScoringPage = () => {
           <div className={styles.bgEle1_1}>
             <img src={bgEle1} alt="bgEle1" />
           </div>
-          <div className={styles.header}>
-            {/* NAME */}
-            <div className={styles.name_ct}>
-              <p>Mr. Somchai Poonthong</p>
-            </div>
-            {/* AVAILABLE FUND */}
-            <div className={styles.available_fund_ct}>
-              <p className={styles.caption}>Available Funding</p>
-              <div className={styles.fund}>
-                <p className={styles.money}>{investorFundString}</p>
-                <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
-              </div>
-            </div>
-            {/* SORTING */}
+          <div className={styles.header_ct}>
             <div className={styles.sorting_ct}>
-              <p className={styles.title}>DDI Investor Pitching</p>
-              <div className={styles.sorting} onClick={() => handleChangeSort(!change)}><p>Sort By {sortingMethod}</p><div dangerouslySetInnerHTML={{ __html: filterIcon }} className={styles.filterIcon}></div></div>
+                <p className={styles.title}>DDI Investor Pitching</p>
+                <div className={styles.sorting} onClick={() => handleChangeSort(!change)}><p>Sort By {sortingMethod}</p><div dangerouslySetInnerHTML={{ __html: filterIcon }} className={styles.filterIcon}></div></div>
+              </div>
+            <div className={styles.header}>
+              {/* NAME */}
+              <div className={styles.name_ct}>
+                <p>Mr. Somchai Poonthong</p>
+              </div>
+              {/* AVAILABLE FUND */}
+              <div className={styles.available_fund_ct}>
+                <p className={styles.caption}>Available Funding</p>
+                <div className={styles.fund}>
+                  <p className={styles.money}>{investorFundString}</p>
+                  <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
+                </div>
+              </div>
+              {/* SORTING */}
             </div>
           </div>
 

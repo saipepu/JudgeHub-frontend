@@ -6,11 +6,18 @@
 }
 .wrapper {
   padding: 32px;
+  padding-top: 24px;
   padding-bottom: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+.header_ct {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .header {
   width: 100%;
@@ -21,7 +28,7 @@
 }
 .name_ct {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
 }
 .name_ct > p {
   width: 100%;
@@ -33,7 +40,7 @@
 }
 .available_fund_ct > p {
   width: 100%;
-  font: 200 18px Prompt;
+  font: 200 14px Prompt;
   text-align: right;
   line-height: 100%;
   overflow: hidden;
@@ -46,22 +53,25 @@
   align-items: center;
 }
 .money {
-  font: 600 42px Prompt;
+  font: 600 36px Prompt;
   line-height: 100%;
   overflow: hidden;
 }
 .ddi_dollar {
-  width: 56px;
-  height: 56px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 6px;
 }
 .sorting_ct {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 16px;
 }
 .title {
   line-height: 90%;
@@ -102,8 +112,8 @@
   transform: rotateY(180deg) rotateX(180deg);
 }
 .bgEle1_1 {
-  top: 0;
-  left: -4%;
+  top: -4%;
+  left: -6%;
 }
 .bgEle1_1 > img {
   width: 100%;
@@ -114,7 +124,7 @@
 .teams_ct {
   width: 100%;
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
   gap: 22px;
   overflow-y: scroll;
   overflow-x: hidden;
