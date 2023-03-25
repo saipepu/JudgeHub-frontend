@@ -64,6 +64,8 @@
   align-items: center;
 }
 .title {
+  line-height: 90%;
+  overflow: hidden;
   font: 600 3rem Prompt;
 }
 .sorting {
@@ -76,7 +78,7 @@
   align-items: center;
 }
 .sorting > p {
-  font: 400 20px Prompt;
+  font: 400 16px Prompt;
 }
 .filterIcon {
   display: grid;
@@ -112,7 +114,7 @@
 .teams_ct {
   width: 100%;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   gap: 22px;
   overflow-y: scroll;
   overflow-x: hidden;

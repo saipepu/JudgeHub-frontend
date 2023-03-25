@@ -146,7 +146,7 @@ export const ddiDollar = `<svg width="45" height="45" viewBox="0 0 1426 1426" fi
 </defs>
 </svg>
 `
-export const filterIcon = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const filterIcon = `<svg width="22" height="22" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19.8744 2.99997H2" stroke="black" stroke-width="2"/>
 <path d="M19.8741 11.0003H5.9718" stroke="black" stroke-width="2"/>
 <path d="M19.8738 19.0002H9.9436" stroke="black" stroke-width="2"/>
