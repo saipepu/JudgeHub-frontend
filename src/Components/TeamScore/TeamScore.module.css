@@ -57,6 +57,9 @@
   margin: auto;
 }
 @media (width <= 800px) {
+  .container {
+    box-shadow: none;
+  }
   .wrapper {
     padding: 12px;
   }

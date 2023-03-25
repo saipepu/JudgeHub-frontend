@@ -72,7 +72,6 @@ const ScoringPage = () => {
             </div>
           </div>
 
-
           {/* TEAMS */}
           <div className={styles.teams_ct}>
             {teamSort.map((item, index) => {
