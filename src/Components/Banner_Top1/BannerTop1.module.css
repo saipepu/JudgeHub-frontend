@@ -1,0 +1,77 @@
+.container,.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: flex;
+}
+.container {
+  padding: 6px 0px 6px 12px;
+}
+.wrapper {
+  background: var(--ddi-gradient-r);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-3);
+  padding-left: 80px;
+  padding-right: 6px;
+  box-shadow: 0px 15px 30px 0px #FF696940;
+}
+.badge {
+  position: absolute;
+  display: block;
+  height: 120%;
+  left: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  /* display: flex; */
+  /* background: var(--ddi-gradient-r) */
+}
+.badgeBg {
+  height: 100%;
+}
+.badgeBg > svg {
+  margin: auto;
+  height: 110%;
+}
+.badge > p {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-80%, -50%);
+  font: italic 800 42px Prompt;
+  color: #FFD84D;
+}
+.teamName {
+  width: 100%;
+  display: grid;
+}
+.teamName > p {
+  margin: auto;
+  width: 100%;
+  text-align: left;
+  font: 600 36px Prompt;
+}
+.teamFund {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+.teamFund > p {
+  font: 600 36px Prompt;
+}
+.ddi_dollar {
+  display: grid;
+  border-radius: 100%;
+  background: white;
+  padding: 6px;
+}
+.ddi_dollar > svg {
+  margin: auto;
+  width: 26px;
+  height: 26px;
+}

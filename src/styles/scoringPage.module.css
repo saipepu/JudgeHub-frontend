@@ -1,0 +1,176 @@
+.container, .wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.wrapper {
+  padding: 32px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.name_ct {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.name_ct > p {
+  width: 100%;
+  font: 600 18px Prompt;
+  text-align: right;
+}
+.available_fund_ct {
+  width: 100%;
+}
+.available_fund_ct > p {
+  width: 100%;
+  font: 200 18px Prompt;
+  text-align: right;
+  line-height: 100%;
+  overflow: hidden;
+}
+.fund {
+  width: 100%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.money {
+  font: 600 56px Prompt;
+  line-height: 100%;
+  overflow: hidden;
+}
+.ddi_dollar {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sorting_ct {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font: 600 3rem Prompt;
+}
+.sorting {
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sorting > p {
+  font: 400 20px Prompt;
+}
+.filterIcon {
+  display: grid;
+}
+.filterIcon > svg {
+  margin: auto;
+}
+.bgEle1,.bgEle1_1 {
+  position: fixed;
+  height: fit-content;
+  bottom: 0;
+  right: 0;
+  width: 40%;
+  z-index: -1;
+}
+.bgEle1 > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transform: rotateY(180deg) rotateX(180deg);
+}
+.bgEle1_1 {
+  top: 0;
+  left: -4%;
+}
+.bgEle1_1 > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.teams_ct {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 22px;
+  overflow: scroll;
+  padding-top: 12px;
+}
+@media (width <= 1100px) {
+  .teams_ct {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+@media (width <= 1000px) {
+  .teams_ct {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (width <= 800px) {
+  .bgEle1_1 {
+    z-index: 2;
+  }
+  .header {
+    background: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 32px 32px 12px 32px;
+    box-shadow: var(--box-shadow-2);
+  }
+  .caption {
+    font: 600 16px Prompt;
+  }
+  .money {
+    font: 600 32px Prompt;
+  }
+  .ddi_dollar {
+    width: 32px;
+  }
+  .title {
+    font: 400 18px Prompt;
+  }
+  .sorting {
+    white-space: nowrap;
+    margin: 6px 0px;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  .sorting > p {
+    display: none;
+  }
+  .filterIcon > svg {
+    width: 16px;
+    height: 16px;
+  }
+  .teams_ct {
+    padding-top: 200px;
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (width <= 600px) {
+  .teams_ct {
+    grid-template-columns: auto auto;
+    padding-bottom: 100px;
+  }
+}

@@ -1,0 +1,71 @@
+.container {
+  /* background: white; */
+  box-shadow: var(--box-shadow-2);
+  height: fit-content;
+}
+.wrapper {
+  background: white;
+  box-shadow: var(--box-shadow-1);
+  padding: 12px 28px;
+  border-radius: 15px;
+  height: fit-content;
+}
+.teamName {
+  width: 100%;
+  display: grid;
+}
+.teamName > p {
+  margin: auto;
+  font: 400 28px Prompt;
+}
+.fund_ct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fund_ct > p {
+  font: 600 26px Prompt;
+  background: var(--ddi-gradient-r);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ddi_dollar {
+  padding-left: 6px;
+  display: grid;
+}
+.ddi_dollar > svg {
+  margin: auto;
+  width: 22px;
+  height: 22px;
+}
+.button_gp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.plus_button,.minus_button {
+  flex: 1;
+  border: none;
+  background: var(--ddi-gradient-r);
+  height: 32px;
+  border-radius: 8px;
+}
+@media (width <= 800px) {
+  .wrapper {
+    padding: 12px;
+  }
+  .teamName > p {
+    font-size: 20px;
+  }
+  .fund_ct > p {
+    font-size: 22px;
+  }
+  .ddi_dollar > svg {
+    width: 18px;
+    height: 18px;
+  }
+  .plus_button,.minus_button {
+    height: 24px;
+  }
+}
