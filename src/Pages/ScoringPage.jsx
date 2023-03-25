@@ -12,12 +12,13 @@ const ScoringPage = () => {
   let investorFundString = NumberToString(investorFund);
   console.log(investorFundString);
 
-  let OrderSort = teamList;
+  let OrderSort = [];
   let FundSort = [];
   for(let i=0; i<teamList.length; i++) {
     let name = teamList[i].name;
     let fund = parseInt(teamList[i].fund.split(',').join(''));
     FundSort.push({name: name, fund: fund})
+    OrderSort.push({name: name, fund: fund})
   }
   FundSort.sort((a,b) => b.fund - a.fund);
 

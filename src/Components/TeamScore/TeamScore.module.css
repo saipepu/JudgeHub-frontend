@@ -6,7 +6,7 @@
 .wrapper {
   background: white;
   box-shadow: var(--box-shadow-1);
-  padding: 12px 28px;
+  padding: 12px 20px;
   border-radius: 15px;
   height: fit-content;
 }
@@ -16,7 +16,7 @@
 }
 .teamName > p {
   margin: auto;
-  font: 400 28px Prompt;
+  font: 400 22px Prompt;
 }
 .fund_ct {
   display: flex;
@@ -24,7 +24,7 @@
   align-items: center;
 }
 .fund_ct > p {
-  font: 600 26px Prompt;
+  font: 600 22px Prompt;
   background: var(--ddi-gradient-r);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
