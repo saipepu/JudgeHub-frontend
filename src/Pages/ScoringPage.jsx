@@ -66,6 +66,7 @@ const ScoringPage = () => {
                   <p className={styles.money}>{investorFundString}</p>
                   <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
                 </div>
+                <div className={styles.sorting} onClick={() => handleChangeSort(!change)}><p>Sort By {sortingMethod}</p><div dangerouslySetInnerHTML={{ __html: filterIcon }} className={styles.filterIcon}></div></div>
               </div>
               {/* SORTING */}
             </div>

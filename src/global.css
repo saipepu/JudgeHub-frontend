@@ -8,6 +8,9 @@
   width: 0px;
   height: 0px;
 }
+body,html {
+  position: fixed;
+}
 :root {
   --ddi-gradient-r: radial-gradient(ellipse at 120% 120%, #560202 0%, #A30100 36%, #FF4B33 84%);
   --ddi-gradient-l: radial-gradient(ellipse at -120% 120%, #560202 0%, #A30100 36%, #FF4B33 84%);
