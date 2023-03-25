@@ -5,7 +5,6 @@ import { NumberToString } from '../../Functions/NumberToString'
 
 const TeamScore = ({ name, fund, investorFund }) => {
 
-  console.log(fund);
   let fundString = NumberToString(fund);
   const handleIncrease = () => {
     console.log('increase')

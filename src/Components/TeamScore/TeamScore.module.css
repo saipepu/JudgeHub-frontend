@@ -2,6 +2,7 @@
   /* background: white; */
   box-shadow: var(--box-shadow-2);
   height: fit-content;
+  border-radius: 15px;
 }
 .wrapper {
   background: white;
