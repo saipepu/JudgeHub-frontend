@@ -1,24 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/login.module.css'
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom'
+import login from '../api/Login';
+import { Oval } from 'react-loader-spinner'
 
 const Login = () => {
+
+  const [response, setResponse] = useState();
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const navigation = useNavigate();
 
   let initialState = {
     id: "",
+    username: "",
     password: "",
   }
   const formik = useFormik({
     initialValues: initialState,
     onSubmit: async(values) => {
-      console.log('submit');
-      console.log(values);
-      navigation('/scoringPage')
+      console.log('Logging In -> ', values);
+      setLoading(true);
+      setTimeout(() => {
+        login(values, setResponse);
+      }, 500)
     }
   })
+
+  useEffect(() => {
+    if(response?.success) {
+      console.log('Login Success');
+      setIsError(false);
+      navigation('/scoringPage')
+    } else {
+      setIsError(true);
+    }
+    setLoading(false);
+  }, [response, navigation])
 
   return (
     <>
@@ -37,17 +57,26 @@ const Login = () => {
         <div className={styles.form_ct}>
           <form onSubmit={formik.handleSubmit} className={styles.form}>
             <legend>Login</legend>
-            <label htmlFor="id">Id <span>{`(or username)`}</span></label>
+            <label htmlFor="id">Id</label>
             <input className={styles.input} id="id" name="id" type="text" 
             onChange={formik.handleChange} value={formik.values.id} />
 
+            <label htmlFor="username">Username</label>
+            <input className={styles.input} id="username" name="username" type="text" 
+            onChange={formik.handleChange} value={formik.values.username} />
+
             <label htmlFor="password">Password</label>
-            <input className={styles.input} id="password" name="password" type="password"
+            <input autoComplete='current-plassword' className={styles.input} id="password" name="password" type="password"
             onChange={formik.handleChange} value={formik.values.password} />
 
             <button className={styles.submit_button} type="submit">
-              <p>Login</p>
+              {loading ? (
+                <Oval width="22" height="22" strokeWidth={5} strokeWidthSecondary={8} color="red" secondaryColor="red" />
+              ) : (
+                <p>Login</p>
+              )}
             </button>
+            {isError ? (<p className={styles.error}>{response?.error} !</p>) : ""}
           </form>
         </div>
       </div>

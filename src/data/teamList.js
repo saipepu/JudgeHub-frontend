@@ -1,3 +1,5 @@
+import { api } from "../api/api"
+
 export const teamList = [
   {
     name: 'Jelly Bob',
@@ -92,3 +94,11 @@ export const teamList = [
     fund: '0'
   }
 ]
+
+export const data = async (setTeamList) => {
+  const result = await fetch(`${api}/getAllTeam`, {
+    methods: 'GET'
+  }).then(data => data.json().then(result => result))
+  .catch(error => error);
+  setTeamList(result.team);
+}

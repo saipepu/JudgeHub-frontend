@@ -72,6 +72,7 @@
   display: none;
 }
 .sorting_ct {
+  cursor: pointer;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -67,12 +67,19 @@ label {
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
+  display: grid;
+}
+.submit_button > * {
+  margin: auto;
 }
 .submit_button > p {
   font: 800 22px Prompt;
   background: var(--ddi-gradient-r);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.error {
+  font: 400 12px Prompt;
 }
 
 @media (width <= 800px) {
