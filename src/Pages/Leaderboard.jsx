@@ -17,6 +17,7 @@ const socket = io("https://ddi-socket-io-janpoonthong.vercel.app/", {
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Origin": "https://ddi-socket-io-janpoonthong.vercel.app/",
     },
+    transports: ['websocket', 'polling', 'flashsocket']
 });
 
 const Leaderboard = () => {
