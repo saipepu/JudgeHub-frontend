@@ -11,13 +11,13 @@ import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
 
-const socket = io("https://ddi-socket-io-janpoonthong.vercel.app/", {
+const socket = io("https://ddi-socket-io.herokuapp.com", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-socket-io-janpoonthong.vercel.app/",
+        "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
     },
-    transports: ['websocket', 'polling', 'flashsocket']
+    transports: ['websocket']
 });
 
 const Leaderboard = () => {

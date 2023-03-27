@@ -1,6 +1,7 @@
 import { api } from "./api";
 
 const Increase = async (values, setResponse) => {
+    console.log(values);
     try {
         const result = await fetch(`${api}/judge/updateJudge`, {
             method: "PUT",
@@ -10,7 +11,6 @@ const Increase = async (values, setResponse) => {
             },
             body: JSON.stringify(values),
         }).then((data) => data.json());
-
         setResponse(result);
     } catch (err) {
         console.error(err);

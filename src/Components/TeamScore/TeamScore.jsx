@@ -5,6 +5,7 @@ import { NumberToString } from '../../Functions/NumberToString'
 import Increase from "../../api/Increase";
 import Decrease from "../../api/Decrease";
 import { Oval } from 'react-loader-spinner';
+import { getJudge } from '../../api/getOneJudge';
 
 const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
 
@@ -20,7 +21,14 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(investorFund >= 5000) {
-        Increase({ teamList: { investmentAmount: amount + 5000, teamName: name}, id: id, totalBank: investorFund - amount})
+        Increase({
+          id: id,
+          action: "plus",
+          teamList: {
+              teamName: name,
+              investmentAmount: 5000
+          }
+      }, setResponse)
         setAmount(amount + 5000);
         setInvestorFund(investorFund - 5000);
         setTrigger(!trigger);
@@ -28,18 +36,24 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
       setLoading(false);
     }, 250)
   }
+  
   const handleDecrease = () => {
     setLoading(true);
     setTimeout(() => {
       if(amount > 0) {
-        Decrease({ teamList: { investmentAmount: amount - 5000, teamName: name}, id: id, totalBank: investorFund + amount})
+        Decrease({          
+          id: id,
+          action: "minus",
+          teamList: {
+              teamName: name,
+              investmentAmount: 5000
+          }}, setResponse)
         setAmount(amount - 5000);
         setInvestorFund(investorFund + 5000);
         setTrigger(!trigger);
       }
       setLoading(false);
     }, 250)
-
   }
 
   return (

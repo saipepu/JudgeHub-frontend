@@ -61,7 +61,7 @@ const Login = () => {
                             className={styles.form}
                         >
                             <legend>Login</legend>
-                            <label htmlFor="id">Id</label>
+                            <label htmlFor="id">ID</label>
                             <input
                                 className={styles.input}
                                 id="id"
@@ -69,16 +69,6 @@ const Login = () => {
                                 type="text"
                                 onChange={formik.handleChange}
                                 value={formik.values.id}
-                            />
-
-                            <label htmlFor="username">Username</label>
-                            <input
-                                className={styles.input}
-                                id="username"
-                                name="username"
-                                type="text"
-                                onChange={formik.handleChange}
-                                value={formik.values.username}
                             />
 
                             <label htmlFor="password">Password</label>
@@ -90,6 +80,16 @@ const Login = () => {
                                 type="password"
                                 onChange={formik.handleChange}
                                 value={formik.values.password}
+                            />
+
+                            <label htmlFor="username">Judge Name</label>
+                            <input
+                                className={styles.input}
+                                id="username"
+                                name="username"
+                                type="text"
+                                onChange={formik.handleChange}
+                                value={formik.values.username}
                             />
 
                             <button

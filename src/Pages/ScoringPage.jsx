@@ -20,13 +20,11 @@ const ScoringPage = () => {
   const [option, setOption] = useState(false);
 
   useEffect(() => {
-    console.log(state);
     if(state) {
+        console.log(state);
         getJudge(state?.response?.judge.id, setResponse);
     }
   }, [state, trigger])
-
-  console.log(teamList);
   
   useEffect(() => {
     if(response?.success) {
@@ -38,6 +36,7 @@ const ScoringPage = () => {
 
   useEffect(() => {
     if(judge){
+      console.log(judge);
       setInvestorFund(judge?.totalBank)
     } else {
       setInvestorFund('0')
@@ -131,7 +130,7 @@ const ScoringPage = () => {
             <div className={styles.teams_ct}>
                 {teamSort?.map((item, index) => {
                 return (
-                    <TeamScore key={index} id={state?.response?.judge.id} name={item.teamName} fund={item.investmentAmount} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
+                    <TeamScore key={index} id={judge.id} name={item.teamName} fund={item.investmentAmount} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
                 )
                 })}
             </div>
