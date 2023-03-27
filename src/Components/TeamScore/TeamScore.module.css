@@ -56,6 +56,10 @@
 .plus_button > svg,.minus_button > svg {
   margin: auto;
 }
+.plus_button > div,
+.minus_button > div {
+    margin: auto;
+}
 @media (width <= 800px) {
   .container {
     box-shadow: none;

@@ -11,11 +11,11 @@ import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3003", {
+const socket = io("http://localhost:3001", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "http://localhost:3003",
+        "Access-Control-Allow-Origin": "http://localhost:3001",
     },
 });
 

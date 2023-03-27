@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 const PageNotFound = () => {
     // const socket = io.connect("http://localhost:3001")
