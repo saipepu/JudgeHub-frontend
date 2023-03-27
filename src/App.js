@@ -7,13 +7,15 @@ import Leaderboard from './Pages/Leaderboard'
 
 const App = () => {
 
+  localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
+
   return (
     <>
       <div className="App">
         <HashRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/scoringPage" element={<ScoringPage />} />
+            <Route path="/scoringPage/:id" element={<ScoringPage />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

@@ -1,159 +1,202 @@
-import React, { useEffect, useState } from 'react'
-import styles from '../styles/leaderBoard.module.css'
-import bgEle1 from '../assets/bgEle1.png'
-import bgEle2 from '../assets/bgEle2.png'
-import BannerDefault from '../Components/Banner_Default/BannerDefault'
-import BannerSecondary from '../Components/Banner_Secondary/BannerSecondary'
-import BannerTop1 from '../Components/Banner_Top1/BannerTop1'
-import BannerTop3 from '../Components/Banner_Top3/BannerTop3'
-import BannerTop10 from '../Components/Banner_Top10/BannerTop10'
-import { data } from '../data/teamList'
-import { NumberToString } from '../Functions/NumberToString'
+import React, { useEffect, useState } from "react";
+import styles from "../styles/leaderBoard.module.css";
+import bgEle1 from "../assets/bgEle1.png";
+import bgEle2 from "../assets/bgEle2.png";
+import BannerDefault from "../Components/Banner_Default/BannerDefault";
+import BannerSecondary from "../Components/Banner_Secondary/BannerSecondary";
+import BannerTop1 from "../Components/Banner_Top1/BannerTop1";
+import BannerTop3 from "../Components/Banner_Top3/BannerTop3";
+import BannerTop10 from "../Components/Banner_Top10/BannerTop10";
+import { data } from "../data/teamListForLeaderBoard";
+import { NumberToString } from "../Functions/NumberToString";
+import { io } from "socket.io-client";
+
+const socket = io("http://localhost:3003", {
+    withCredentials: true,
+    extraHeaders: {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "http://localhost:3003",
+    },
+});
 
 const Leaderboard = () => {
+    const [teamList, setTeamList] = useState([]);
+    const [unSortedList, setUnSortedList] = useState([]);
+    const [change, setChange] = useState(0);
 
-  const [teamList, setTeamList] = useState([]);
+    useEffect(() => {
+        socket.on("change", () => {
+            setChange((change) => change + 1);
+        });
+    }, []);
 
-  // useEffect(() => {
-  //   const socket = new WebSocket('ws://localhost:4002');
+    useEffect(() => {
+        data(setUnSortedList);
+    }, [change]);
+    console.log(unSortedList)
 
-  //   socket.addEventListener('open', function (event) {
-  //     console.log('Connected to WebSocket server')
-  //   })
+    useEffect(() => {
+          let arr = unSortedList
+          arr.sort((a,b) => b.amount - a.amount);
+          setTeamList(arr)
+          // console.log(response.message[0].allTeams);
+      }, [unSortedList])
 
-    // socket.addEventListener('close', function (event) {
-    //   console.log('Disconnected from WebSocket server')
-    // })
+      console.log(teamList);
 
-    // socket.addEventListener('message', function (event) {
-    //   console.log('Received message:', event.data);
-      
-    //   while(socket.readyState === WebSocket.OPEN) {
-    //     socket.send('Message received');
-    //     break;
-    //   }
-    // })
-    // return () => {
-    //   socket.close();
-    // }
-  // }, [])f
-
-  const [trigger, setTrigger] = useState(true);
-
-  useEffect(() => {
-    data(setTeamList);
-    setTimeout(() => {
-      console.log('hi')
-      setTrigger(!trigger);
-    }, 2000)
-  }, [trigger])
-
-  if(teamList?.length > 0) {
-    teamList?.sort((a,b) => b - a)
-  }
-
-  let count = 1;
-  let Top10 = [];
-  let TheRest = [];
-  for(let i=0; i<teamList?.length; i++) {
-    teamList[i].amountStr = NumberToString(teamList[i].amount);
-    if(i!==0) {
-      if(teamList[i].amount === teamList[i-1].amount) {
-        teamList[i].rank = i + 1 - count;
-        count++;
-      } else {
-        teamList[i].rank = i + 1;
-        count = 1;
-      }
-    } else {
-      teamList[i].rank = 1;
+    let count = 1;
+    let Top10 = [];
+    let TheRest = [];
+    for (let i = 0; i < teamList?.length; i++) {
+        console.log(teamList[i]);
+        teamList[i].amountStr = NumberToString(teamList[i].amount);
+        if (i !== 0) {
+            if (teamList[i].amount === teamList[i - 1].amount) {
+                teamList[i].rank = i + 1 - count;
+                count++;
+            } else {
+                teamList[i].rank = i + 1;
+                count = 1;
+            }
+        } else {
+            teamList[i].rank = 1;
+        }
+        if (i < 10) {
+            Top10.push(teamList[i]);
+        } else {
+            TheRest.push(teamList[i]);
+        }
     }
-    if(i<10) {
-      Top10.push(teamList[i])
-    } else {
-      TheRest.push(teamList[i])
-    }
-  }
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        {/* background element */}
-          <div className={styles.bgEle1}>
-            <img src={bgEle1} alt="bgEle1" />
-          </div>
-          <div className={styles.bgEle1_1}>
-            <img src={bgEle1} alt="bgEle1" />
-          </div>
-          <div className={styles.bgEle2}>
-            <img src={bgEle2} alt="bgEle2" />
-          </div>
+    return (
+        <div className={styles.container}>
+            <div className={styles.wrapper}>
+                {/* background element */}
+                <div className={styles.bgEle1}>
+                    <img src={bgEle1} alt="bgEle1" />
+                </div>
+                <div className={styles.bgEle1_1}>
+                    <img src={bgEle1} alt="bgEle1" />
+                </div>
+                <div className={styles.bgEle2}>
+                    <img src={bgEle2} alt="bgEle2" />
+                </div>
 
-        {/* board */}
-        <div className={styles.header}>
-          {/* <div className={styles.sub_title}>
+                {/* board */}
+                <div className={styles.header}>
+                    {/* <div className={styles.sub_title}>
             <p>DDI Investor Pitching</p>
           </div> */}
-          <div className={styles.title}>
-            <p>DDI Investor Pitching Leaderboard</p>
-          </div>
-        </div>
+                    <div className={styles.title}>
+                        <p>DDI Investor Pitching Leaderboard</p>
+                    </div>
+                </div>
 
-        <div className={styles.board_ct}>
-          <div className={styles.right}>
-            {Top10.map((item, index) => {
-              if(item.amount === 0) {
-                return (
-                  <BannerDefault key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank === 1) {
-                return (
-                  <BannerTop1 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank <= 3) {
-                return (
-                  <BannerTop3 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank <= 10) {
-                return (
-                  <BannerTop10 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else {
-                return (
-                  <BannerSecondary key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              }
-            })}
-          </div>
-          <div className={styles.left}>
-            {TheRest.map((item, index) => {
-              if(item.amount === 0) {
-                return (
-                  <BannerDefault key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank === 1) {
-                return (
-                  <BannerTop1 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank <= 3) {
-                return (
-                  <BannerTop3 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else if(item.rank <= 10) {
-                return (
-                  <BannerTop10 key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              } else {
-                return (
-                  <BannerSecondary key={index} name={item.name} fund={item.amountStr} rank={item.rank} />
-                )
-              }
-            })}
-          </div>
+                <div className={styles.board_ct}>
+                    <div className={styles.right}>
+                        {Top10.map((item, index) => {
+                            if (item.amount === 0) {
+                                return (
+                                    <BannerDefault
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank === 1) {
+                                return (
+                                    <BannerTop1
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank <= 3) {
+                                return (
+                                    <BannerTop3
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank <= 10) {
+                                return (
+                                    <BannerTop10
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <BannerSecondary
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            }
+                        })}
+                    </div>
+                    <div className={styles.left}>
+                        {TheRest.map((item, index) => {
+                            if (item.amount === 0) {
+                                return (
+                                    <BannerDefault
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank === 1) {
+                                return (
+                                    <BannerTop1
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank <= 3) {
+                                return (
+                                    <BannerTop3
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else if (item.rank <= 10) {
+                                return (
+                                    <BannerTop10
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <BannerSecondary
+                                        key={index}
+                                        name={item.name}
+                                        fund={item.amountStr}
+                                        rank={item.rank}
+                                    />
+                                );
+                            }
+                        })}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
-}
+    );
+};
 
-export default Leaderboard
+export default Leaderboard;

@@ -1,224 +1,255 @@
 .container, .wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-.wrapper {
-  padding: 32px;
-  padding-top: 24px;
-  padding-bottom: 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-.header_ct {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 12px;
-}
-.header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-.name_ct {
-  width: 100%;
-  margin-bottom: 2px;
-}
-.name_ct > p {
-  width: 100%;
-  font: 600 18px Prompt;
-  text-align: right;
-}
-.available_fund_ct {
-  width: 100%;
-}
-.available_fund_ct > p {
-  width: 100%;
-  font: 200 14px Prompt;
-  text-align: right;
-  line-height: 100%;
-  overflow: hidden;
-}
-.fund {
-  width: 100%;
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.money {
-  font: 600 36px Prompt;
-  line-height: 100%;
-  overflow: hidden;
-}
-.ddi_dollar {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px;
-}
-.available_fund_ct > .sorting {
-  width: fit-content;
-  margin-left: auto;
-  display: none;
-}
-.sorting_ct {
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-left: 16px;
-}
-.title {
-  line-height: 90%;
-  overflow: hidden;
-  font: 600 3rem Prompt;
-}
-.sorting {
-  background: transparent;
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 6px 12px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.sorting > p {
-  font: 400 16px Prompt;
-}
-.filterIcon {
-  display: grid;
-}
-.filterIcon > svg {
-  margin: auto;
-}
-.bgEle1,.bgEle1_1 {
-  position: fixed;
-  height: fit-content;
-  bottom: 0;
-  right: 0;
-  width: 40%;
-  z-index: -1;
-}
-.bgEle1 > img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  transform: rotateY(180deg) rotateX(180deg);
-}
-.bgEle1_1 {
-  top: -4%;
-  left: -6%;
-}
-.bgEle1_1 > img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-.teams_ct {
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  gap: 22px;
-  padding: 16px;
-  padding-bottom: 200px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-@media (width <= 1100px) {
-  .teams_ct {
-    grid-template-columns: auto auto auto auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
   }
-}
-@media (width <= 1000px) {
-  .teams_ct {
-    grid-template-columns: auto auto auto;
-  }
-}
-@media (width <= 800px) {
   .wrapper {
-    padding: 24px;
-  }
-  .bgEle1_1 {
-    z-index: 2;
-  }
-  .available_fund_ct > .sorting {
+    padding: 32px;
+    padding-top: 24px;
+    padding-bottom: 0px;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    gap: 2px;
-    padding: 2px 6px;
+  }
+  .header_ct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 12px;
   }
   .header {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    background: white;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding: 32px 32px 12px 32px;
-    box-shadow: var(--box-shadow-2);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .name_ct {
+    width: 100%;
+    margin-bottom: 2px;
   }
   .name_ct > p {
-    text-align: left;
-    line-height: 100%;
+    width: 100%;
+    font: 600 18px Prompt;
+    text-align: right;
   }
-  .caption {
-    font: 600 16px Prompt;
+  .available_fund_ct {
+    width: 100%;
+  }
+  .available_fund_ct > p {
+    width: 100%;
+    font: 200 14px Prompt;
+    text-align: right;
+    line-height: 100%;
+    overflow: hidden;
+  }
+  .fund {
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
   .money {
-    font: 600 26px Prompt;
+    font: 600 36px Prompt;
+    line-height: 100%;
+    overflow: hidden;
   }
   .ddi_dollar {
-    width: 28px;
-    padding: 2px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
   }
-  .title {
-    font: 400 18px Prompt;
-  }
-  .sorting_ct {
+  .available_fund_ct > .sorting {
+    width: fit-content;
+    margin-left: auto;
     display: none;
   }
+  .sorting_ct {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 16px;
+    position: relative;
+  }
+  .title {
+    width: 100%;
+    line-height: 90%;
+    overflow: hidden;
+    font: 600 3rem Prompt;
+  }
   .sorting {
-    white-space: nowrap;
-    margin: 6px 0px;
-    padding: 6px;
-    border-radius: 5px;
+    width: fit-content;
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
   }
   .sorting > p {
-    font: 300 12px Prompt;
+    font: 400 16px Prompt;
+    user-select: none;
+  }
+  .option_ct {
+    width: fit-content;
+    background: white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 6px 12px;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .options {
+    white-space: nowrap;
+    width: 100%;
+    font: 400 12px Prompt;
+    text-align: right;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--gray);
+  }
+  .filterIcon {
+    display: grid;
   }
   .filterIcon > svg {
-    width: 16px;
-    height: 16px;
+    margin: auto;
+  }
+  .bgEle1,.bgEle1_1 {
+    position: fixed;
+    height: fit-content;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    z-index: -1;
+  }
+  .bgEle1 > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transform: rotateY(180deg) rotateX(180deg);
+  }
+  .bgEle1_1 {
+    top: -4%;
+    left: -6%;
+  }
+  .bgEle1_1 > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
   }
   .teams_ct {
-    padding-top: 140px;
-    grid-template-columns: auto auto auto;
-    gap: 12px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 22px;
+    padding: 16px;
+    padding-bottom: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
-}
-@media (width <= 600px) {
-  .wrapper {
-    padding: 18px;
+  @media (width <= 1100px) {
+    .teams_ct {
+      grid-template-columns: auto auto auto auto;
+    }
   }
-  .teams_ct {
-    padding: 2px;
-    grid-template-columns: auto auto;
-    padding-top: 140px;
-    padding-bottom: 100px;
+  @media (width <= 1000px) {
+    .teams_ct {
+      grid-template-columns: auto auto auto;
+    }
   }
-}
+  @media (width <= 800px) {
+    .wrapper {
+      padding: 24px;
+    }
+    .bgEle1_1 {
+      z-index: 2;
+    }
+    .available_fund_ct > .sorting {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px 6px;
+    }
+    .header {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      background: white;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      padding: 32px 32px 12px 32px;
+      box-shadow: var(--box-shadow-2);
+    }
+    .name_ct > p {
+      text-align: left;
+      line-height: 100%;
+    }
+    .caption {
+      font: 600 16px Prompt;
+    }
+    .money {
+      font: 600 26px Prompt;
+    }
+    .ddi_dollar {
+      width: 28px;
+      padding: 2px;
+    }
+    .title {
+      font: 400 18px Prompt;
+    }
+    .sorting_ct {
+      display: none;
+    }
+    .sorting {
+      white-space: nowrap;
+      margin: 6px 0px;
+      padding: 6px;
+      border-radius: 5px;
+    }
+    .sorting > p {
+      font: 300 12px Prompt;
+    }
+    .filterIcon > svg {
+      width: 16px;
+      height: 16px;
+    }
+    .teams_ct {
+      padding-top: 140px;
+      grid-template-columns: auto auto auto;
+      gap: 12px;
+    }
+  }
+  @media (width <= 600px) {
+    .wrapper {
+      padding: 18px;
+    }
+    .teams_ct {
+      padding: 2px;
+      grid-template-columns: auto auto;
+      padding-top: 140px;
+      padding-bottom: 100px;
+    }
+  }
