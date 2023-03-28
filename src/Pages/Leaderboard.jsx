@@ -37,17 +37,10 @@ const Leaderboard = () => {
         data(setUnSortedList);
     }, [change]);
 
-    console.log(unSortedList)
-    useEffect(() => {
-          let arr = unSortedList
-          arr.sort((a,b) => b.fund - a.fund);
-          setTeamList(arr)
-          // console.log(response.message[0].allTeams);
-      }, [unSortedList])
-
     let count = 1;
     let Top10 = [];
     let TheRest = [];
+
     for (let i = 0; i < teamList?.length; i++) {
         teamList[i].amountStr = NumberToString(teamList[i].amount);
         if (i !== 0) {
@@ -67,6 +60,13 @@ const Leaderboard = () => {
             TheRest.push(teamList[i]);
         }
     }
+
+    useEffect(() => {
+        let arr = unSortedList
+        arr.sort((a,b) => b.amount - a.amount);
+        setTeamList(arr)
+        // console.log(response.message[0].allTeams);
+    }, [unSortedList])
 
     return (
         <div className={styles.container}>

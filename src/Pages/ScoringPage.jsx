@@ -80,18 +80,20 @@ const ScoringPage = () => {
             <div className={styles.header_ct}>
                 <div className={styles.sorting_ct}>
                     <p className={styles.title}>DDI Investor Pitching</p>
-                    <div className={styles.sorting} onClick={() => setOption(!option)}>
-                    <p>Sort By</p>
-                    <div dangerouslySetInnerHTML={{ __html: filterIcon }} className={styles.filterIcon}></div>
-                    {option ? (
-                        <div className={styles.option_ct}>
-                        {/* {sortMethod !== 'Pitching Order' ? ( */}
-                            <div className={styles.options} onClick={() => handleChangeSort('Funding')}>Funding</div>
-                        {/* ) : ( */}
-                            <div className={styles.options} onClick={() => handleChangeSort('Pitching Order')}>Pitching Order</div>
-                        {/* )} */}
-                        </div>
-                    ) : ( " ")}
+                    <div className={styles.sorting}>
+                      <div 
+                        className={styles.sort_by_fund}
+                        onClick={() => handleChangeSort('Funding')}
+                        style={ sortMethod === 'Funding' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}>
+                        Sort By Fund
+                      </div>
+                      <div
+                        className={styles.sort_by_pitching}
+                        onClick={() => handleChangeSort('Pitching Order')}
+                        style={ sortMethod === 'Pitching Order' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}
+                      >
+                        Sort By Pitching Order
+                      </div>
                     </div>
                 </div>
                 <div className={styles.header}>
@@ -106,18 +108,20 @@ const ScoringPage = () => {
                     <p className={styles.money}>{NumberToString(investorFund)}</p>
                     <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
                     </div>
-                    <div className={styles.sorting} onClick={() => setOption(!option)}>
-                    <p>Sort By {sortMethod}</p>
-                    <div dangerouslySetInnerHTML={{ __html: filterIcon }} className={styles.filterIcon}></div>
-                    {option ? (
-                        <div className={styles.option_ct}>
-                        {/* {sortMethod !== 'Pitching Order' ? ( */}
-                            <div className={styles.options} onClick={() => handleChangeSort('Funding')}>Funding</div>
-                        {/* ) : ( */}
-                            <div className={styles.options} onClick={() => handleChangeSort('Pitching Order')}>Pitching Order</div>
-                        {/* )} */}
-                        </div>
-                    ) : ( " ")}
+                    <div className={styles.sorting}>
+                      <div 
+                        className={styles.sort_by_fund}
+                        onClick={() => handleChangeSort('Funding')}
+                        style={ sortMethod === 'Funding' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}>
+                        Sort By Fund
+                      </div>
+                      <div
+                        className={styles.sort_by_pitching}
+                        onClick={() => handleChangeSort('Pitching Order')}
+                        style={ sortMethod === 'Pitching Order' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}
+                      >
+                        Sort By Pitching Order
+                      </div>
                     </div>
 
                 </div>

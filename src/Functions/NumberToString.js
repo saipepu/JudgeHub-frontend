@@ -1,5 +1,4 @@
 export const NumberToString = (numb) => {
-  console.log(numb);
   let str = numb?.toString().split('').reverse().join('');
   let arr = [];
   for(let i=0; i<str?.length; i+=3) {

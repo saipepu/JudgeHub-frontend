@@ -93,43 +93,21 @@
     line-height: 90%;
     overflow: hidden;
     font: 600 3rem Prompt;
+    white-space: nowrap;
   }
   .sorting {
-    background: white;
-    width: fit-content;
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 6px 12px;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
+    gap: 12px;
   }
-  .sorting > p {
-    font: 400 16px Prompt;
-    user-select: none;
-    color: black;
-  }
-  .option_ct {
-    width: fit-content;
+  .sort_by_fund,.sort_by_pitching {
     background: white;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    padding: 6px 12px;
+    color: black;
+    padding: 2px 12px;
     border-radius: 5px;
-    box-shadow: var(--box-shadow-1);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 6px;
-  }
-  .options {
-    white-space: nowrap;
-    width: 100%;
-    font: 400 12px Prompt;
-    text-align: right;
   }
   .divider {
     width: 100%;
@@ -192,24 +170,22 @@
       padding: 24px;
     }
     .bgEle1_1 {
+      top: 0%;
       z-index: 2;
     }
-    .available_fund_ct > .sorting {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      padding: 2px 6px;
-    }
     .header {
+      background: black;
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
-      background: white;
       position: fixed;
       top: 0px;
       left: 0px;
       padding: 32px 32px 12px 32px;
       box-shadow: var(--box-shadow-2);
+    }
+    .name_ct {
+      width: fit-content;
     }
     .name_ct > p {
       text-align: left;
@@ -231,14 +207,20 @@
     .sorting_ct {
       display: none;
     }
-    .sorting {
-      white-space: nowrap;
-      margin: 6px 0px;
-      padding: 6px;
-      border-radius: 5px;
+    .available_fund_ct {
+      width: 100%;
     }
-    .sorting > p {
-      font: 300 12px Prompt;
+    .available_fund_ct > .sorting {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end
+    }
+    .sort_by_fund,.sort_by_pitching {
+      background: white;
+      color: black;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font: 400 14px Prompt;
     }
     .filterIcon > svg {
       width: 16px;
