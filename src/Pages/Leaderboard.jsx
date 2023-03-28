@@ -10,12 +10,23 @@ import BannerTop10 from "../Components/Banner_Top10/BannerTop10";
 import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
-
-const socket = io("https://ddi-socket-io.herokuapp.com", {
+import { getAllTeams } from "../api/getAllTeams";
+// https://ddi-socket-io.herokuapp.com
+// https://ddi-backend.herokuapp.com/api
+// https://ddi-pepu-backend-saipepu.vercel.app/api
+// const socket = io("http://localhost:3001", {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "Access-Control-Allow-Credentials": "true",
+//         "Access-Control-Allow-Origin": "http://localhost:3001",
+//     },
+//     transports: ['websocket']
+// });
+const socket = io("https://ddi-backend.herokuapp.com", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
+        "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
     },
     transports: ['websocket']
 });
@@ -32,27 +43,24 @@ const Leaderboard = () => {
     }, []);
 
     useEffect(() => {
-        data(setUnSortedList);
+        getAllTeams(setUnSortedList)
     }, [change]);
-    console.log(unSortedList)
 
     useEffect(() => {
           let arr = unSortedList
-          arr.sort((a,b) => b.amount - a.amount);
+          arr.sort((a,b) => b.fund - a.fund);
           setTeamList(arr)
           // console.log(response.message[0].allTeams);
       }, [unSortedList])
 
-      console.log(teamList);
 
     let count = 1;
     let Top10 = [];
     let TheRest = [];
     for (let i = 0; i < teamList?.length; i++) {
-        console.log(teamList[i]);
-        teamList[i].amountStr = NumberToString(teamList[i].amount);
+        teamList[i].amountStr = NumberToString(teamList[i].fund);
         if (i !== 0) {
-            if (teamList[i].amount === teamList[i - 1].amount) {
+            if (teamList[i].fund === teamList[i - 1].fund) {
                 teamList[i].rank = i + 1 - count;
                 count++;
             } else {
@@ -96,7 +104,7 @@ const Leaderboard = () => {
                 <div className={styles.board_ct}>
                     <div className={styles.right}>
                         {Top10.map((item, index) => {
-                            if (item.amount === 0) {
+                            if (item.fund === 0) {
                                 return (
                                     <BannerDefault
                                         key={index}
@@ -146,7 +154,7 @@ const Leaderboard = () => {
                     </div>
                     <div className={styles.left}>
                         {TheRest.map((item, index) => {
-                            if (item.amount === 0) {
+                            if (item.fund === 0) {
                                 return (
                                     <BannerDefault
                                         key={index}

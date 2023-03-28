@@ -4,12 +4,12 @@ import { ddiDollar, filterIcon } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
 
-  const { state } = useLocation();
+  const { id } = useParams();
   const [judge, setJudge] = useState();
   const [investorFund, setInvestorFund] = useState("");
   const [response, setResponse] = useState();
@@ -20,24 +20,21 @@ const ScoringPage = () => {
   const [option, setOption] = useState(false);
 
   useEffect(() => {
-    if(state) {
-        console.log(state);
-        getJudge(state?.response?.judge.id, setResponse);
-    }
-  }, [state, trigger])
+    getJudge(id, setResponse);
+  }, [id])
   
   useEffect(() => {
     if(response?.success) {
-      setJudge(response.judge);
-      setTeamList(response.judge.teamList);
-      setTeamSort(response.judge.teamList);
+      setJudge(response.message);
+      setTeamList(response.message.teamList);
+      setTeamSort(response.message.teamList);
     }
   }, [response])
 
   useEffect(() => {
     if(judge){
       console.log(judge);
-      setInvestorFund(judge?.totalBank)
+      setInvestorFund(judge?.totalFund)
     } else {
       setInvestorFund('0')
     }
@@ -49,11 +46,11 @@ const ScoringPage = () => {
     for(let i=0; i<teamList?.length; i++) {
       let id = teamList[i].id;
       let name = teamList[i].teamName;
-      let fundStr = teamList[i].investmentAmount?.toString();
+      let fundStr = teamList[i].fund?.toString();
       let fund = parseInt(fundStr.split(',').join(''));
-      fundSort.push({id: id, teamName: name, investmentAmount: fund})
-      fundSort.sort((a,b) => b.investmentAmount - a.investmentAmount);
-      orderSort.push({id: id, teamName: name, investmentAmount: fund})
+      fundSort.push({id: id, teamName: name, fund: fund})
+      fundSort.sort((a,b) => b.fund - a.fund);
+      orderSort.push({id: id, teamName: name, fund: fund})
       console.log(fundSort)
       console.log(orderSort)
     }
@@ -130,7 +127,7 @@ const ScoringPage = () => {
             <div className={styles.teams_ct}>
                 {teamSort?.map((item, index) => {
                 return (
-                    <TeamScore key={index} id={judge.id} name={item.teamName} fund={item.investmentAmount} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
+                    <TeamScore key={index} id={judge._id} name={item.name} fund={item.fund} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
                 )
                 })}
             </div>

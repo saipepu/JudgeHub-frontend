@@ -13,8 +13,8 @@ const Login = () => {
     const navigation = useNavigate();
 
     let initialState = {
-        id: "",
-        username: "",
+        login_id: "",
+        name: "",
         password: "",
     };
     const formik = useFormik({
@@ -31,10 +31,11 @@ const Login = () => {
     // console.log(response)
 
     useEffect(() => {
+        console.log(response);
         if (response?.success) {
-            console.log("Login Success", response.judge.id);
+            console.log("Login Success", response.message.judge._id);
             setIsError(false);
-            navigation(`/scoringPage/${response.judge.id}`, { state: { response } });
+            navigation(`/scoringPage/${response.message.judge._id}`);
         } else {
             setIsError(true);
         }
@@ -61,14 +62,14 @@ const Login = () => {
                             className={styles.form}
                         >
                             <legend>Login</legend>
-                            <label htmlFor="id">ID</label>
+                            <label htmlFor="login_id">ID</label>
                             <input
                                 className={styles.input}
-                                id="id"
-                                name="id"
+                                id="login_in"
+                                name="login_id"
                                 type="text"
                                 onChange={formik.handleChange}
-                                value={formik.values.id}
+                                value={formik.values.login_id}
                             />
 
                             <label htmlFor="password">Password</label>
@@ -82,14 +83,14 @@ const Login = () => {
                                 value={formik.values.password}
                             />
 
-                            <label htmlFor="username">Judge Name</label>
+                            <label htmlFor="name">Judge Name</label>
                             <input
                                 className={styles.input}
-                                id="username"
-                                name="username"
+                                id="name"
+                                name="name"
                                 type="text"
                                 onChange={formik.handleChange}
-                                value={formik.values.username}
+                                value={formik.values.name}
                             />
 
                             <button

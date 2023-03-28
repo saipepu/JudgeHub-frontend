@@ -6,12 +6,15 @@ import Increase from "../../api/Increase";
 import Decrease from "../../api/Decrease";
 import { Oval } from 'react-loader-spinner';
 import { getJudge } from '../../api/getOneJudge';
+import { updateJudgeFund } from '../../api/updateJudgeFund';
+import { updateTotalTeamsFund } from '../../api/updateTotalTeamsFund';
 
 const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
 
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(fund);
+  console.log(amount);
 
   useEffect(() => {
     setAmount(fund);
@@ -21,15 +24,10 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(investorFund >= 5000) {
-        Increase({
-          id: id,
-          action: "plus",
-          teamList: {
-              teamName: name,
-              investmentAmount: 5000
-          }
-      }, setResponse)
-        setAmount(amount + 5000);
+      updateJudgeFund(id,{ teamName: name, fund: 5000, totalFund: investorFund - 5000 })
+      updateTotalTeamsFund({ name: name, action: 'increase'})
+
+      setAmount(amount + 5000);
         setInvestorFund(investorFund - 5000);
         setTrigger(!trigger);
       }
@@ -41,13 +39,8 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(amount > 0) {
-        Decrease({          
-          id: id,
-          action: "minus",
-          teamList: {
-              teamName: name,
-              investmentAmount: 5000
-          }}, setResponse)
+        updateJudgeFund(id, { teamName: name, fund: 5000, totalFund: investorFund + 5000 })
+        updateTotalTeamsFund({ name: name, action: 'decrease'})
         setAmount(amount - 5000);
         setInvestorFund(investorFund + 5000);
         setTrigger(!trigger);
