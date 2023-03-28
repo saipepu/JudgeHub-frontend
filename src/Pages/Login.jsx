@@ -31,7 +31,6 @@ const Login = () => {
     // console.log(response)
 
     useEffect(() => {
-        console.log(response);
         if (response?.success) {
             console.log("Login Success", response.message.judge._id);
             setIsError(false);

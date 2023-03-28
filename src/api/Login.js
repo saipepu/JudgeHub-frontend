@@ -1,7 +1,6 @@
 import { api } from "./api";
 
 const login = async (values, setResponse) => {
-    console.log(values);
     await fetch(`${api}/judges/login`, {
         method: "POST",
         headers: {

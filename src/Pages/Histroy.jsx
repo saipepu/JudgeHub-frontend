@@ -12,7 +12,6 @@ const HistoryLog = () => {
   }, [])
 
   useEffect(() => {
-    console.log(response);  
     if(response) {
       setHistory(response);
     }
@@ -25,7 +24,6 @@ const HistoryLog = () => {
       <div className={styles.wrapper}>
         <div className={styles.history_ct}>
           {history?.map((item, index) => {
-            console.log(item);
             return (
               <div key={index} className={styles.history}>
                 <p className={styles.teamName}>{item?.name}</p>

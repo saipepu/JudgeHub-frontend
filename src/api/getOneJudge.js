@@ -1,7 +1,6 @@
 import { api } from "./api"
 
 export const getJudge = async (id, setResponse) => {
-  console.log(id);
   const response = await fetch(`${api}/judges/${id}`, {
     method: "GET",
     headers: {

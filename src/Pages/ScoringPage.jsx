@@ -31,7 +31,6 @@ const ScoringPage = () => {
   }, [response])
   
   useEffect(() => {
-    console.log(judge);
     if(judge){
       setInvestorFund(judge?.totalFund)
     } else {
@@ -62,7 +61,6 @@ const ScoringPage = () => {
   const handleChangeSort = (action) => {
     setFetch(!fetch);
     setTimeout(() => {
-      console.log(action);
       let fundSort = [];
       let orderSort = [];
       for(let i=0; i<teamList?.length; i++) {

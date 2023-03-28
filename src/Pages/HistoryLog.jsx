@@ -12,7 +12,6 @@ const HistoryLog = () => {
   }, [])
 
   useEffect(() => {
-    console.log(response);  
     if(response?.success) {
       setHistory(response.message);
     } else {

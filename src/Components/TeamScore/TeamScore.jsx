@@ -30,22 +30,22 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(investorFund >= 5000) {
-      updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
-      updateTotalTeamsFund({ name: name, action: 'increase'})
-
-      console.log(investorFund - 5000);
-      setAmount(amount + 5000);
-      setInvestorFund(investorFund - 5000);
-      setTrigger(!trigger);
+        console.log(amount + 5000, "-", investorFund - 5000);
+        updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
+        updateTotalTeamsFund({ name: name, action: 'increase'})
+        setAmount(amount + 5000);
+        setInvestorFund(investorFund - 5000);
+        setTrigger(!trigger);
       }
       setLoading(false);
-    }, 250)
+    }, 1000)
   }
 
   const handleDecrease = () => {
     setLoading(true);
     setTimeout(() => {
       if(amount > 0) {
+        console.log(amount - 5000, "-", investorFund + 5000);
         updateJudgeFund(id, { teamName: name, fund: amount - 5000, totalFund: investorFund + 5000 })
         updateTotalTeamsFund({ name: name, action: 'decrease'})
         setAmount(amount - 5000);
@@ -53,7 +53,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         setTrigger(!trigger);
       }
       setLoading(false);
-    }, 250)
+    }, 1000)
   }
 
   return (
