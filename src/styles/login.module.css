@@ -69,6 +69,7 @@ label {
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
+    background: white;
     display: grid;
 }
 .submit_button > * {
@@ -76,9 +77,7 @@ label {
 }
 .submit_button > p {
     font: 800 22px Prompt;
-    background: var(--ddi-gradient-r);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: black;
 }
 .error {
     font: 400 12px Prompt;
