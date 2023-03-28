@@ -29,7 +29,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
     if(investorFund >= 500000 && !loading) {
       console.log(amount + 500000, "-", investorFund - 500000);
       updateJudgeFund(id,{ teamName: name, fund: amount + 500000, totalFund: investorFund - 500000 })
-      updateTotalTeamsFund({ name: name, action: 'increase'})
+      // updateTotalTeamsFund({ name: name, action: 'increase'})
       setAmount(amount + 500000);
       setInvestorFund(investorFund - 500000);
       setTrigger(!trigger);
@@ -45,7 +45,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
     if(amount > 0 && !loading) {
       console.log(amount - 500000, "-", investorFund + 500000);
       updateJudgeFund(id, { teamName: name, fund: amount - 500000, totalFund: investorFund + 500000 })
-      updateTotalTeamsFund({ name: name, action: 'decrease'})
+      // updateTotalTeamsFund({ name: name, action: 'decrease'})
       setAmount(amount - 500000);
       setInvestorFund(investorFund + 500000);
       setTrigger(!trigger);
