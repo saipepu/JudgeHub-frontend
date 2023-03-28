@@ -10,12 +10,21 @@ import BannerTop10 from "../Components/Banner_Top10/BannerTop10";
 import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
+import { getAllTeams } from "../api/getAllTeams";
 
-const socket = io("https://ddi-socket-io.herokuapp.com", {
+// const socket = io("https://ddi-socket-io.herokuapp.com", {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "Access-Control-Allow-Credentials": "true",
+//         "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
+//     },
+//     transports: ['websocket']
+// });
+const socket = io("http://localhost:3001", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
+        "Access-Control-Allow-Origin": "http://localhost:3001",
     },
     transports: ['websocket']
 });
@@ -27,29 +36,28 @@ const Leaderboard = () => {
 
     useEffect(() => {
         socket.on("change", () => {
+            console.log('changed');
             setChange((change) => change + 1);
         });
     }, []);
 
     useEffect(() => {
+        // getAllTeams(setUnSortedList);
         data(setUnSortedList);
     }, [change]);
-    console.log(unSortedList)
 
+    console.log(unSortedList)
     useEffect(() => {
           let arr = unSortedList
-          arr.sort((a,b) => b.amount - a.amount);
+          arr.sort((a,b) => b.fund - a.fund);
           setTeamList(arr)
           // console.log(response.message[0].allTeams);
       }, [unSortedList])
-
-      console.log(teamList);
 
     let count = 1;
     let Top10 = [];
     let TheRest = [];
     for (let i = 0; i < teamList?.length; i++) {
-        console.log(teamList[i]);
         teamList[i].amountStr = NumberToString(teamList[i].amount);
         if (i !== 0) {
             if (teamList[i].amount === teamList[i - 1].amount) {
@@ -85,9 +93,6 @@ const Leaderboard = () => {
 
                 {/* board */}
                 <div className={styles.header}>
-                    {/* <div className={styles.sub_title}>
-            <p>DDI Investor Pitching</p>
-          </div> */}
                     <div className={styles.title}>
                         <p>DDI Investor Pitching Leaderboard</p>
                     </div>

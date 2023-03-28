@@ -4,12 +4,12 @@ import { ddiDollar, filterIcon } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
 
-  const { state } = useLocation();
+  const { id } = useParams();
   const [judge, setJudge] = useState();
   const [investorFund, setInvestorFund] = useState("");
   const [response, setResponse] = useState();
@@ -20,11 +20,10 @@ const ScoringPage = () => {
   const [option, setOption] = useState(false);
 
   useEffect(() => {
-    if(state) {
-        console.log(state);
-        getJudge(state?.response?.judge.id, setResponse);
+    if(id) {
+        getJudge(id, setResponse);
     }
-  }, [state, trigger])
+  }, [id, investorFund])
   
   useEffect(() => {
     if(response?.success) {

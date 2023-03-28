@@ -34,7 +34,7 @@ const Login = () => {
         if (response?.success) {
             console.log("Login Success", response.judge.id);
             setIsError(false);
-            navigation(`/scoringPage/${response.judge.id}`, { state: { response } });
+            navigation(`/scoringPage/${response.judge.id}`);
         } else {
             setIsError(true);
         }
