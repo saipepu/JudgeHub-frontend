@@ -33,9 +33,10 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
       updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
       updateTotalTeamsFund({ name: name, action: 'increase'})
 
+      console.log(investorFund - 5000);
       setAmount(amount + 5000);
-        setInvestorFund(investorFund - 5000);
-        setTrigger(!trigger);
+      setInvestorFund(investorFund - 5000);
+      setTrigger(!trigger);
       }
       setLoading(false);
     }, 250)

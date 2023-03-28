@@ -4,12 +4,11 @@ import { ddiDollar } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
 
-  const navigation = useNavigate();
   const { id } = useParams();
   const [judge, setJudge] = useState();
   const [investorFund, setInvestorFund] = useState("");
@@ -18,10 +17,11 @@ const ScoringPage = () => {
   const [teamSort, setTeamSort] = useState();
   const [trigger, setTrigger] = useState(true);
   const [sortMethod, setSortingMethod] = useState(localStorage.getItem('ddi-team-sorting-order'))
+  const [fetch, setFetch] = useState(false);
 
   useEffect(() => {
     getJudge(id, setResponse);
-  }, [id, trigger])
+  }, [id, fetch])
   
   useEffect(() => {
     if(response?.success) {
@@ -31,8 +31,8 @@ const ScoringPage = () => {
   }, [response])
   
   useEffect(() => {
+    console.log(judge);
     if(judge){
-      console.log(judge);
       setInvestorFund(judge?.totalFund)
     } else {
       setInvestorFund('0')
@@ -56,28 +56,33 @@ const ScoringPage = () => {
       setSortingMethod('Funding');
       setTeamSort(fundSort)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [judge, teamList])
 
   const handleChangeSort = (action) => {
-    let fundSort = [];
-    let orderSort = [];
-    for(let i=0; i<teamList?.length; i++) {
-      let name = teamList[i].name;
-      let fundStr = teamList[i].fund?.toString();
-      let fund = parseInt(fundStr.split(',').join(''));
-      fundSort.push({name: name, fund: fund})
-      fundSort.sort((a,b) => b.fund - a.fund);
-      orderSort.push({name: name, fund: fund})
-    }
-    if(action === 'Pitching Order') {
-      localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
-      setSortingMethod('Pitching Order');
-      setTeamSort(orderSort)
-    } else {
-      localStorage.setItem('ddi-team-sorting-order', 'Funding')
-      setSortingMethod('Funding');
-      setTeamSort(fundSort)
-    }
+    setFetch(!fetch);
+    setTimeout(() => {
+      console.log(action);
+      let fundSort = [];
+      let orderSort = [];
+      for(let i=0; i<teamList?.length; i++) {
+        let name = teamList[i].name;
+        let fundStr = teamList[i].fund?.toString();
+        let fund = parseInt(fundStr.split(',').join(''));
+        fundSort.push({name: name, fund: fund})
+        fundSort.sort((a,b) => b.fund - a.fund);
+        orderSort.push({name: name, fund: fund})
+      }
+      if(action === 'Pitching Order') {
+        localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
+        setSortingMethod('Pitching Order');
+        setTeamSort(orderSort)
+      } else {
+        localStorage.setItem('ddi-team-sorting-order', 'Funding')
+        setSortingMethod('Funding');
+        setTeamSort(fundSort)
+      }
+    }, 250)
   }
 
     return (
