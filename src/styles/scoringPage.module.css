@@ -156,6 +156,7 @@
     padding-bottom: 200px;
     overflow-y: scroll;
     overflow-x: hidden;
+    z-index: 100;
   }
   .header > .sorting {
     display: none;
