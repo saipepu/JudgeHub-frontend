@@ -10,7 +10,6 @@ import BannerTop10 from "../Components/Banner_Top10/BannerTop10";
 import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
-import { getAllTeams } from "../api/getAllTeams";
 
 const socket = io("https://ddi-socket-io.herokuapp.com", {
     withCredentials: true,

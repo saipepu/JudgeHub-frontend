@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/scoringPage.module.css";
-import { ddiDollar, filterIcon } from "../assets/svg";
+import { ddiDollar } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
@@ -17,7 +17,6 @@ const ScoringPage = () => {
   const [teamSort, setTeamSort] = useState();
   const [trigger, setTrigger] = useState(true);
   const [sortMethod, setSortingMethod] = useState(localStorage.getItem('ddi-team-sorting-order'))
-  const [option, setOption] = useState(false);
 
   useEffect(() => {
     if(id) {

@@ -101,7 +101,7 @@ label {
     }
     .title_ct {
         width: 100%;
-        padding: 80px 0px;
+        padding: 40px 0px;
         flex: 0;
         align-items: center
     }
@@ -134,5 +134,15 @@ label {
     }
     .submit_button > p {
         font-size: 18px;
+    }
+}
+@media (width <= 600px) {
+    .form_ct {
+        padding-bottom: 200px;
+    }
+    .form {
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
     }
 }

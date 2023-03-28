@@ -5,7 +5,6 @@ import { NumberToString } from '../../Functions/NumberToString'
 import Increase from "../../api/Increase";
 import Decrease from "../../api/Decrease";
 import { Oval } from 'react-loader-spinner';
-import { getJudge } from '../../api/getOneJudge';
 
 const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
 
