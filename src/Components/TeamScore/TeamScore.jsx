@@ -37,7 +37,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
     }
     setTimeout(() => {
       setLoading(false);
-    }, 500)
+    }, 1000)
   }
 
   const handleDecrease = () => {
@@ -52,7 +52,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
     }
     setTimeout(() => {
       setLoading(false);
-    }, 500)
+    }, 1000)
   }
 
   return (
