@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JudgeHub/static/css/main.f0345f93.css",
-    "main.js": "/JudgeHub/static/js/main.3f569c53.js",
+    "main.css": "/JudgeHub/static/css/main.a5c65d35.css",
+    "main.js": "/JudgeHub/static/js/main.8db0cdd5.js",
     "static/media/bgEle1.png": "/JudgeHub/static/media/bgEle1.cadc576299b2eb719ef9.png",
     "static/media/bgEle2.png": "/JudgeHub/static/media/bgEle2.b051aca683c5ac147475.png",
     "index.html": "/JudgeHub/index.html",
-    "main.f0345f93.css.map": "/JudgeHub/static/css/main.f0345f93.css.map",
-    "main.3f569c53.js.map": "/JudgeHub/static/js/main.3f569c53.js.map"
+    "main.a5c65d35.css.map": "/JudgeHub/static/css/main.a5c65d35.css.map",
+    "main.8db0cdd5.js.map": "/JudgeHub/static/js/main.8db0cdd5.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0345f93.css",
-    "static/js/main.3f569c53.js"
+    "static/css/main.a5c65d35.css",
+    "static/js/main.8db0cdd5.js"
   ]
 }
