@@ -21,6 +21,7 @@
     width: 100%;
     padding-bottom: 12px;
     color: white;
+    z-index: 101;
   }
   .header {
     width: 100%;
