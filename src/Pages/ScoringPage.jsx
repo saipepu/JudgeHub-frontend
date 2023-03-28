@@ -96,35 +96,34 @@ const ScoringPage = () => {
                     </div>
                 </div>
                 <div className={styles.header}>
-                {/* NAME */}
-                <div className={styles.name_ct}>
-                    <p>{judge?.name}</p>
-                </div>
-                {/* AVAILABLE FUND */}
-                <div className={styles.available_fund_ct}>
-                    <p className={styles.caption}>Available Funding</p>
-                    <div className={styles.fund}>
-                    <p className={styles.money}>{NumberToString(investorFund)}</p>
-                    <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
-                    </div>
-                    <div className={styles.sorting}>
-                      <div 
-                        className={styles.sort_by_fund}
-                        onClick={() => handleChangeSort('Funding')}
-                        style={ sortMethod === 'Funding' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}>
-                        Sort By Fund
+                  {/* NAME */}
+                  <div className={styles.name_ct}>
+                      <p>{judge?.name}</p>
+                  </div>
+                  {/* AVAILABLE FUND */}
+                  <div className={styles.available_fund_ct}>
+                      <p className={styles.caption}>Available Funding</p>
+                      <div className={styles.fund}>
+                      <p className={styles.money}>{NumberToString(investorFund)}</p>
+                      <div className={styles.ddi_dollar} dangerouslySetInnerHTML={{ __html: ddiDollar}} ></div>
                       </div>
-                      <div
-                        className={styles.sort_by_pitching}
-                        onClick={() => handleChangeSort('Pitching Order')}
-                        style={ sortMethod === 'Pitching Order' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}
-                      >
-                        Sort By Pitching Order
-                      </div>
+                  </div>
+                  <div className={styles.sorting}>
+                    <div 
+                      className={styles.sort_by_fund}
+                      onClick={() => handleChangeSort('Funding')}
+                      style={ sortMethod === 'Funding' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}>
+                      Sort By Fund
                     </div>
-
-                </div>
-                {/* SORTING */}
+                    <div
+                      className={styles.sort_by_pitching}
+                      onClick={() => handleChangeSort('Pitching Order')}
+                      style={ sortMethod === 'Pitching Order' ? { background: 'var(--ddi-gradient-r', color: 'white'} : {background: 'white', color: 'black'}}
+                    >
+                      Sort By Pitching Order
+                    </div>
+                  </div>
+                  {/* SORTING */}
                 </div>
             </div>
 
