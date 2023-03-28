@@ -38,7 +38,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         setTrigger(!trigger);
       }
       setLoading(false);
-    }, 1000)
+    }, 0)
   }
 
   const handleDecrease = () => {
@@ -53,7 +53,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         setTrigger(!trigger);
       }
       setLoading(false);
-    }, 1000)
+    }, 0)
   }
 
   return (
