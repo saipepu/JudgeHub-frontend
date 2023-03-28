@@ -4,11 +4,12 @@ import { ddiDollar } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
 
+  const navigation = useNavigate();
   const { id } = useParams();
   const [judge, setJudge] = useState();
   const [investorFund, setInvestorFund] = useState("");
@@ -20,13 +21,13 @@ const ScoringPage = () => {
 
   useEffect(() => {
     getJudge(id, setResponse);
-  }, [id])
+  }, [id, trigger])
   
   useEffect(() => {
     if(response?.success) {
       setJudge(response.message);
       setTeamList(response.message.teamList);
-      setTeamSort(response.message.teamList);
+      handleChangeSort(localStorage.getItem('ddi-team-sorting-order'))
     }
   }, [response])
 
@@ -43,13 +44,12 @@ const ScoringPage = () => {
     let fundSort = [];
     let orderSort = [];
     for(let i=0; i<teamList?.length; i++) {
-      let id = teamList[i].id;
-      let name = teamList[i].teamName;
+      let name = teamList[i].name;
       let fundStr = teamList[i].fund?.toString();
       let fund = parseInt(fundStr.split(',').join(''));
-      fundSort.push({id: id, teamName: name, fund: fund})
+      fundSort.push({name: name, fund: fund})
       fundSort.sort((a,b) => b.fund - a.fund);
-      orderSort.push({id: id, teamName: name, fund: fund})
+      orderSort.push({name: name, fund: fund})
       console.log(fundSort)
       console.log(orderSort)
     }

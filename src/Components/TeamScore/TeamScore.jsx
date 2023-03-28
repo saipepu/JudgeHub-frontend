@@ -14,7 +14,6 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(fund);
-  console.log(amount);
 
   useEffect(() => {
     setAmount(fund);
@@ -31,7 +30,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(investorFund >= 5000) {
-      updateJudgeFund(id,{ teamName: name, fund: 5000, totalFund: investorFund - 5000 })
+      updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
       updateTotalTeamsFund({ name: name, action: 'increase'})
 
       setAmount(amount + 5000);
@@ -46,11 +45,11 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setLoading(true);
     setTimeout(() => {
       if(amount > 0) {
-        updateJudgeFund(id, { teamName: name, fund: 5000, totalFund: investorFund + 5000 })
+        updateJudgeFund(id, { teamName: name, fund: amount - 5000, totalFund: investorFund + 5000 })
         updateTotalTeamsFund({ name: name, action: 'decrease'})
         setAmount(amount - 5000);
-        // setInvestorFund(investorFund + 5000);
-        // setTrigger(!trigger);
+        setInvestorFund(investorFund + 5000);
+        setTrigger(!trigger);
       }
       setLoading(false);
     }, 250)
