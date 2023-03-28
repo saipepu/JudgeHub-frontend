@@ -11,6 +11,7 @@ const Increase = async (values, setResponse) => {
             },
             body: JSON.stringify(values),
         }).then((data) => data.json());
+        console.log(result);
         setResponse(result);
     } catch (err) {
         console.error(err);

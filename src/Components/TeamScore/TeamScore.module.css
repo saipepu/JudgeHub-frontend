@@ -46,6 +46,7 @@
   gap: 12px;
 }
 .plus_button,.minus_button {
+  cursor: pointer;
   flex: 1;
   border: none;
   background: var(--ddi-gradient-r);

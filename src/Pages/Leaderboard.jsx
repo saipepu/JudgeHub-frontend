@@ -30,7 +30,6 @@ const socket = io("https://ddi-backend.herokuapp.com", {
     },
     transports: ['websocket']
 });
-
 const Leaderboard = () => {
     const [teamList, setTeamList] = useState([]);
     const [unSortedList, setUnSortedList] = useState([]);
@@ -38,6 +37,7 @@ const Leaderboard = () => {
 
     useEffect(() => {
         socket.on("change", () => {
+            console.log('changed');
             setChange((change) => change + 1);
         });
     }, []);
@@ -57,6 +57,7 @@ const Leaderboard = () => {
     let count = 1;
     let Top10 = [];
     let TheRest = [];
+
     for (let i = 0; i < teamList?.length; i++) {
         teamList[i].amountStr = NumberToString(teamList[i].fund);
         if (i !== 0) {
@@ -77,6 +78,13 @@ const Leaderboard = () => {
         }
     }
 
+    useEffect(() => {
+        let arr = unSortedList
+        arr.sort((a,b) => b.amount - a.amount);
+        setTeamList(arr)
+        // console.log(response.message[0].allTeams);
+    }, [unSortedList])
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
@@ -93,9 +101,6 @@ const Leaderboard = () => {
 
                 {/* board */}
                 <div className={styles.header}>
-                    {/* <div className={styles.sub_title}>
-            <p>DDI Investor Pitching</p>
-          </div> */}
                     <div className={styles.title}>
                         <p>DDI Investor Pitching Leaderboard</p>
                     </div>
@@ -203,6 +208,7 @@ const Leaderboard = () => {
                         })}
                     </div>
                 </div>
+
             </div>
         </div>
     );

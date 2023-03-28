@@ -20,6 +20,13 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
     setAmount(fund);
   }, [fund])
 
+  useEffect(() => {
+    if(response?.success) {
+      setInvestorFund(response.judge.totalBank);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response])
+
   const handleIncrease = () => {
     setLoading(true);
     setTimeout(() => {
@@ -34,7 +41,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
       setLoading(false);
     }, 250)
   }
-  
+
   const handleDecrease = () => {
     setLoading(true);
     setTimeout(() => {
@@ -42,8 +49,8 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         updateJudgeFund(id, { teamName: name, fund: 5000, totalFund: investorFund + 5000 })
         updateTotalTeamsFund({ name: name, action: 'decrease'})
         setAmount(amount - 5000);
-        setInvestorFund(investorFund + 5000);
-        setTrigger(!trigger);
+        // setInvestorFund(investorFund + 5000);
+        // setTrigger(!trigger);
       }
       setLoading(false);
     }, 250)
