@@ -14,22 +14,22 @@ import { getAllTeams } from "../api/getAllTeams";
 // https://ddi-socket-io.herokuapp.com
 // https://ddi-backend.herokuapp.com/api
 // https://ddi-pepu-backend-saipepu.vercel.app/api
-// const socket = io("http://localhost:3001", {
-//     withCredentials: true,
-//     extraHeaders: {
-//         "Access-Control-Allow-Credentials": "true",
-//         "Access-Control-Allow-Origin": "http://localhost:3001",
-//     },
-//     transports: ['websocket']
-// });
-const socket = io("https://ddi-backend.herokuapp.com", {
+const socket = io("http://localhost:3001", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
+        "Access-Control-Allow-Origin": "http://localhost:3001",
     },
     transports: ['websocket']
 });
+// const socket = io("https://ddi-backend.herokuapp.com", {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "Access-Control-Allow-Credentials": "true",
+//         "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
+//     },
+//     transports: ['websocket']
+// });
 const Leaderboard = () => {
     const [teamList, setTeamList] = useState([]);
     const [unSortedList, setUnSortedList] = useState([]);
@@ -46,7 +46,6 @@ const Leaderboard = () => {
         getAllTeams(setUnSortedList)
     }, [change]);
 
-    console.log(unSortedList);
 
     useEffect(() => {
         if(unSortedList){

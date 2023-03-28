@@ -4,7 +4,7 @@ import Login from './Pages/Login'
 import PageNotFound from './Pages/PageNotFound'
 import ScoringPage from './Pages/ScoringPage'
 import Leaderboard from './Pages/Leaderboard'
-import HistoryLog from './Pages/Histroy'
+import HistoryLog from './Pages/HistoryLog'
 
 const App = () => {
 

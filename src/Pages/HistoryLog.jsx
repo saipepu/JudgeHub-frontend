@@ -13,12 +13,16 @@ const HistoryLog = () => {
 
   useEffect(() => {
     if(response?.success) {
-      setHistory(response.message);
+      console.log(response)
+      let list = response.history.split(', ');
+      for(let i=0; i<list.length; i++) {}
+      setHistory(response.history.split(', '));
     } else {
       setHistory([{teamName: 'Jelly bob', numberOfTransaction: 2, history: "ddi judge 1 plus 5000000,ddi judge 2 plus 500000"}])
     }
   }, [response])
 
+  console.log(history);
 
   return (
     <div className={styles.container}>

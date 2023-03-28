@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styles from './TeamScore.module.css'
 import { ddiDollar, minusIcon, plusIcon } from '../../assets/svg'
 import { NumberToString } from '../../Functions/NumberToString'
-import Increase from "../../api/Increase";
-import Decrease from "../../api/Decrease";
 import { Oval } from 'react-loader-spinner';
-import { getJudge } from '../../api/getOneJudge';
 import { updateJudgeFund } from '../../api/updateJudgeFund';
-import { updateTotalTeamsFund } from '../../api/updateTotalTeamsFund';
 
 const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
 
+  // eslint-disable-next-line no-unused-vars
   const [response, setResponse] = useState();
   const [amount, setAmount] = useState(fund);
 
@@ -28,7 +25,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
   const handleIncrease = () => {
     if(investorFund >= 500000 && !loading) {
       console.log(amount + 500000, "-", investorFund - 500000);
-      updateJudgeFund(id,{ teamName: name, fund: amount + 500000, totalFund: investorFund - 500000 })
+      updateJudgeFund(id,{ teamName: name, fund: amount + 500000, totalFund: investorFund - 500000 , action: 'Invest'})
       // updateTotalTeamsFund({ name: name, action: 'increase'})
       setAmount(amount + 500000);
       setInvestorFund(investorFund - 500000);
@@ -44,7 +41,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
   const handleDecrease = () => {
     if(amount > 0 && !loading) {
       console.log(amount - 500000, "-", investorFund + 500000);
-      updateJudgeFund(id, { teamName: name, fund: amount - 500000, totalFund: investorFund + 500000 })
+      updateJudgeFund(id, { teamName: name, fund: amount - 500000, totalFund: investorFund + 500000, action: 'Retrieved'})
       // updateTotalTeamsFund({ name: name, action: 'decrease'})
       setAmount(amount - 500000);
       setInvestorFund(investorFund + 500000);
