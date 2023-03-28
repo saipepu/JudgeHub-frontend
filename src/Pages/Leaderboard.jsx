@@ -43,7 +43,7 @@ const Leaderboard = () => {
     }, []);
 
     useEffect(() => {
-            getAllTeams(setUnSortedList)
+        getAllTeams(setUnSortedList)
     }, [change]);
 
     useEffect(() => {
