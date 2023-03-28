@@ -35,19 +35,15 @@ const Leaderboard = () => {
     const [unSortedList, setUnSortedList] = useState([]);
     const [change, setChange] = useState(0);
 
-    // useEffect(() => {
-    //     socket.on("change", () => {
-    //         console.log('changed');
-    //         // setChange((change) => change + 1);
-    //     });
-    // }, []);
+    useEffect(() => {
+        socket.on("change", () => {
+            console.log('changed');
+            setChange((change) => change + 1);
+        });
+    }, []);
 
     useEffect(() => {
-        setTimeout(() => {
-            setChange(!change);
-            console.log('changed 1sec')
             getAllTeams(setUnSortedList)
-        }, 1000)
     }, [change]);
 
     useEffect(() => {
