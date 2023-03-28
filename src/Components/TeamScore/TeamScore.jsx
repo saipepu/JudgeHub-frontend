@@ -87,7 +87,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
           {!loading ? (
             <button
             onClick={() => handleDecrease()}
-            className={styles.minus_button} dangerouslySetInnerHTML={{ __html: minusIcon }} style={investorFund === 0  ? { background: 'var(--gray)'} : {}}></button>
+            className={styles.minus_button} dangerouslySetInnerHTML={{ __html: minusIcon }}></button>
           ) : (
             <button className={styles.minus_button}>
               <Oval
