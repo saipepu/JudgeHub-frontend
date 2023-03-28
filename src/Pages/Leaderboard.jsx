@@ -14,22 +14,22 @@ import { getAllTeams } from "../api/getAllTeams";
 // https://ddi-socket-io.herokuapp.com
 // https://ddi-backend.herokuapp.com/api
 // https://ddi-pepu-backend-saipepu.vercel.app/api
-// const socket = io("http://localhost:3001", {
-//     withCredentials: true,
-//     extraHeaders: {
-//         "Access-Control-Allow-Credentials": "true",
-//         "Access-Control-Allow-Origin": "http://localhost:3001",
-//     },
-//     transports: ['websocket']
-// });
-const socket = io("https://ddi-backend.herokuapp.com", {
+const socket = io("http://localhost:3001", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
+        "Access-Control-Allow-Origin": "http://localhost:3001",
     },
     transports: ['websocket']
 });
+// const socket = io("https://ddi-backend.herokuapp.com", {
+//     withCredentials: true,
+//     extraHeaders: {
+//         "Access-Control-Allow-Credentials": "true",
+//         "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
+//     },
+//     transports: ['websocket']
+// });
 const Leaderboard = () => {
     const [teamList, setTeamList] = useState([]);
     const [unSortedList, setUnSortedList] = useState([]);
@@ -46,19 +46,23 @@ const Leaderboard = () => {
         getAllTeams(setUnSortedList)
     }, [change]);
 
+    console.log(unSortedList);
+
     useEffect(() => {
-          let arr = unSortedList
-          arr.sort((a,b) => {
-            if(a.name < b.name) {
-                return -1;
-            }
-            if(a.name > b.name) {
-                return 1;
-            }
-            return 0;
-          })
-          arr.sort((a,b) => b.fund - a.fund);
-          setTeamList(arr)
+        if(unSortedList){
+            let arr = unSortedList
+            arr?.sort((a,b) => {
+              if(a.name < b.name) {
+                  return -1;
+              }
+              if(a.name > b.name) {
+                  return 1;
+              }
+              return 0;
+            })
+            arr?.sort((a,b) => b.fund - a.fund);
+            setTeamList(arr)
+        }
           // console.log(response.message[0].allTeams);
       }, [unSortedList])
 
@@ -89,7 +93,7 @@ const Leaderboard = () => {
 
     useEffect(() => {
         let arr = unSortedList
-        arr.sort((a,b) => b.amount - a.amount);
+        arr?.sort((a,b) => b.amount - a.amount);
         setTeamList(arr)
         // console.log(response.message[0].allTeams);
     }, [unSortedList])
