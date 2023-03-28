@@ -12,23 +12,14 @@ import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
 import { getAllTeams } from "../api/getAllTeams";
 
-// const socket = io("https://ddi-socket-io.herokuapp.com", {
-//     withCredentials: true,
-//     extraHeaders: {
-//         "Access-Control-Allow-Credentials": "true",
-//         "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
-//     },
-//     transports: ['websocket']
-// });
-const socket = io("http://localhost:3001", {
+const socket = io("https://ddi-socket-io.herokuapp.com", {
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "http://localhost:3001",
+        "Access-Control-Allow-Origin": "https://ddi-socket-io.herokuapp.com",
     },
     transports: ['websocket']
 });
-
 const Leaderboard = () => {
     const [teamList, setTeamList] = useState([]);
     const [unSortedList, setUnSortedList] = useState([]);
