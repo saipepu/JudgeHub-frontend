@@ -26,32 +26,34 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
   }, [response])
 
   const handleIncrease = () => {
-    if(investorFund >= 5000 && !loading) {
-      console.log(amount + 5000, "-", investorFund - 5000);
-      updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
+    if(investorFund >= 500000 && !loading) {
+      console.log(amount + 500000, "-", investorFund - 500000);
+      updateJudgeFund(id,{ teamName: name, fund: amount + 500000, totalFund: investorFund - 500000 })
       updateTotalTeamsFund({ name: name, action: 'increase'})
-      setAmount(amount + 5000);
-      setInvestorFund(investorFund - 5000);
+      setAmount(amount + 500000);
+      setInvestorFund(investorFund - 500000);
       setTrigger(!trigger);
     }
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      console.log('do again now')
     }, 1000)
   }
 
   const handleDecrease = () => {
     if(amount > 0 && !loading) {
-      console.log(amount - 5000, "-", investorFund + 5000);
-      updateJudgeFund(id, { teamName: name, fund: amount - 5000, totalFund: investorFund + 5000 })
+      console.log(amount - 500000, "-", investorFund + 500000);
+      updateJudgeFund(id, { teamName: name, fund: amount - 500000, totalFund: investorFund + 500000 })
       updateTotalTeamsFund({ name: name, action: 'decrease'})
-      setAmount(amount - 5000);
-      setInvestorFund(investorFund + 5000);
+      setAmount(amount - 500000);
+      setInvestorFund(investorFund + 500000);
       setTrigger(!trigger);
     }
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      console.log('do again now')
     }, 1000)
   }
 
@@ -69,7 +71,7 @@ const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInves
           {!loading ? (
             <button
             onClick={() => handleIncrease()}
-            className={styles.plus_button} dangerouslySetInnerHTML={{ __html: plusIcon }} style={investorFund < 5000 ? { background: 'var(--gray)'} : {}}></button>     
+            className={styles.plus_button} dangerouslySetInnerHTML={{ __html: plusIcon }} style={investorFund < 500000 ? { background: 'var(--gray)'} : {}}></button>     
           ) : (
             <button className={styles.plus_button}>
               <Oval
