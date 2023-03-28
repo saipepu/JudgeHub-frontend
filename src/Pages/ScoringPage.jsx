@@ -18,6 +18,7 @@ const ScoringPage = () => {
   const [trigger, setTrigger] = useState(true);
   const [sortMethod, setSortingMethod] = useState(localStorage.getItem('ddi-team-sorting-order'))
   const [fetch, setFetch] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getJudge(id, setResponse);
@@ -148,7 +149,7 @@ const ScoringPage = () => {
             <div className={styles.teams_ct}>
                 {teamSort?.map((item, index) => {
                 return (
-                    <TeamScore key={index} id={judge._id} name={item.name} fund={item.fund} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
+                    <TeamScore key={index} loading={loading} setLoading={setLoading} id={judge._id} name={item.name} fund={item.fund} investorFund={investorFund} setInvestorFund={setInvestorFund} trigger={trigger} setTrigger={setTrigger} />
                 )
                 })}
             </div>

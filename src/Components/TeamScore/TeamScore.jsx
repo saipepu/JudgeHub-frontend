@@ -9,10 +9,9 @@ import { getJudge } from '../../api/getOneJudge';
 import { updateJudgeFund } from '../../api/updateJudgeFund';
 import { updateTotalTeamsFund } from '../../api/updateTotalTeamsFund';
 
-const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
+const TeamScore = ({ loading, setLoading, id, name, fund, investorFund, setInvestorFund, trigger, setTrigger }) => {
 
   const [response, setResponse] = useState();
-  const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(fund);
 
   useEffect(() => {
@@ -28,6 +27,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
 
   const handleIncrease = () => {
     setLoading(true);
+    setTimeout(() => {
       if(investorFund >= 5000) {
         console.log(amount + 5000, "-", investorFund - 5000);
         updateJudgeFund(id,{ teamName: name, fund: amount + 5000, totalFund: investorFund - 5000 })
@@ -37,10 +37,12 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         setTrigger(!trigger);
       }
       setLoading(false);
+    }, 500)
   }
 
   const handleDecrease = () => {
     setLoading(true);
+    setTimeout(() => {
       if(amount > 0) {
         console.log(amount - 5000, "-", investorFund + 5000);
         updateJudgeFund(id, { teamName: name, fund: amount - 5000, totalFund: investorFund + 5000 })
@@ -50,6 +52,7 @@ const TeamScore = ({ id, name, fund, investorFund, setInvestorFund, trigger, set
         setTrigger(!trigger);
       }
       setLoading(false);
+    }, 500)
   }
 
   return (
