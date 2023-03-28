@@ -8,7 +8,9 @@ import HistoryLog from './Pages/Histroy'
 
 const App = () => {
 
-  localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
+  if(!localStorage.getItem('ddi-team-sorting-order')) {
+    localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
+  }
 
   return (
     <>

@@ -27,10 +27,9 @@ const ScoringPage = () => {
     if(response?.success) {
       setJudge(response.message);
       setTeamList(response.message.teamList);
-      handleChangeSort(localStorage.getItem('ddi-team-sorting-order'))
     }
   }, [response])
-
+  
   useEffect(() => {
     if(judge){
       console.log(judge);
@@ -38,7 +37,26 @@ const ScoringPage = () => {
     } else {
       setInvestorFund('0')
     }
-  }, [judge])
+    let fundSort = [];
+    let orderSort = [];
+    for(let i=0; i<teamList?.length; i++) {
+      let name = teamList[i].name;
+      let fundStr = teamList[i].fund?.toString();
+      let fund = parseInt(fundStr.split(',').join(''));
+      fundSort.push({name: name, fund: fund})
+      fundSort.sort((a,b) => b.fund - a.fund);
+      orderSort.push({name: name, fund: fund})
+    }
+    if(sortMethod === 'Pitching Order') {
+      localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
+      setSortingMethod('Pitching Order');
+      setTeamSort(orderSort)
+    } else {
+      localStorage.setItem('ddi-team-sorting-order', 'Funding')
+      setSortingMethod('Funding');
+      setTeamSort(fundSort)
+    }
+  }, [judge, teamList])
 
   const handleChangeSort = (action) => {
     let fundSort = [];
@@ -50,8 +68,6 @@ const ScoringPage = () => {
       fundSort.push({name: name, fund: fund})
       fundSort.sort((a,b) => b.fund - a.fund);
       orderSort.push({name: name, fund: fund})
-      console.log(fundSort)
-      console.log(orderSort)
     }
     if(action === 'Pitching Order') {
       localStorage.setItem('ddi-team-sorting-order', 'Pitching Order')
