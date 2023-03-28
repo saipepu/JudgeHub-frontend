@@ -81,7 +81,8 @@ const ScoringPage = () => {
         setSortingMethod('Funding');
         setTeamSort(fundSort)
       }
-    }, 1000)
+      window.location.reload(false)
+    }, 800)
   }
 
     return (
