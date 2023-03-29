@@ -134,10 +134,11 @@ const HistoryLog = () => {
     if(response?.success) {
       let list = response?.history?.split(',');
       let list_1 = [];
+      console.log(list);
 
       for(let j=0; j<teamListSeed.length; j++) {
         for(let i=0; i<list.length; i++) {
-          if(list[i].split(' ')[0] === teamListSeed[j]?.name) {
+          if(list[i].includes(teamListSeed[j]?.name)) {
             teamListSeed[j].history += list[i] + ",";
           }
         }
