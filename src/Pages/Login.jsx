@@ -36,6 +36,7 @@ const Login = () => {
             setIsError(false);
             navigation(`/scoringPage/${response.message.judge._id}`);
         } else {
+            console.log(response);
             setIsError(true);
         }
         setLoading(false);

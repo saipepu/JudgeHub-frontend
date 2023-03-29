@@ -4,11 +4,12 @@ import { ddiDollar } from "../assets/svg";
 import bgEle1 from "../assets/bgEle1.png";
 import TeamScore from "../Components/TeamScore/TeamScore";
 import { NumberToString } from "../Functions/NumberToString";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getJudge } from "../api/getOneJudge";
 
 const ScoringPage = () => {
 
+  const navigation = useNavigate();
   const { id } = useParams();
   const [judge, setJudge] = useState();
   const [investorFund, setInvestorFund] = useState("");
@@ -25,9 +26,13 @@ const ScoringPage = () => {
   }, [id, fetch])
   
   useEffect(() => {
-    if(response?.success) {
-      setJudge(response.message);
-      setTeamList(response.message.teamList);
+    if(response) {
+      if(response?.success) {
+        setJudge(response.message);
+        setTeamList(response.message.teamList);
+      } else {
+        navigation('/login')
+      }
     }
   }, [response])
   
