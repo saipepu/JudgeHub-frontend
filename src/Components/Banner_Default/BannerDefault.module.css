@@ -42,7 +42,7 @@
   left: 50%;
   transform: translate(-80%, -50%);
   font: italic 500 22px Prompt;
-  color: white;
+  color: black;
 }
 .teamName {
   width: 100%;
