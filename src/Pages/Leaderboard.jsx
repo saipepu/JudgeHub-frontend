@@ -22,11 +22,12 @@ import { getAllTeams } from "../api/getAllTeams";
 //     },
 //     transports: ['websocket']
 // });
-const socket = io("https://ddi-backend.herokuapp.com", {
+const socket = io("https://ddi-pepu-backend-saipepu.vercel.app/api", {
+    // https://ddi-backend.herokuapp.com
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://ddi-backend.herokuapp.com",
+        "Access-Control-Allow-Origin": "https://ddi-pepu-backend-saipepu.vercel.app/api",
     },
     transports: ['websocket']
 });
@@ -48,21 +49,20 @@ const Leaderboard = () => {
 
 
     useEffect(() => {
-        if(unSortedList){
-            let arr = unSortedList
-            arr?.sort((a,b) => {
-              if(a.name < b.name) {
-                  return -1;
-              }
-              if(a.name > b.name) {
-                  return 1;
-              }
-              return 0;
-            })
-            arr?.sort((a,b) => b.fund - a.fund);
-            setTeamList(arr)
-        }
-          // console.log(response.message[0].allTeams);
+        // if(unSortedList.length > 0){
+        //     let arr = unSortedList
+        //     arr.sort((a,b) => {
+        //       if(a.name < b.name) {
+        //           return -1;
+        //       }
+        //       if(a.name > b.name) {
+        //           return 1;
+        //       }
+        //       return 0;
+        //     })
+        //     arr.sort((a,b) => b.fund - a.fund);
+        //     setTeamList(arr)
+        // }
       }, [unSortedList])
 
 
@@ -70,8 +70,9 @@ const Leaderboard = () => {
     let Top10 = [];
     let TheRest = [];
 
-    for (let i = 0; i < teamList?.length; i++) {
-        teamList[i].amountStr = NumberToString(teamList[i].fund);
+    console.log(teamList)
+    for (let i = 0; i < teamList.length; i++) {
+        teamList[i].amountStr = NumberToString(teamList[i]?.fund);
         if (i !== 0) {
             if (teamList[i].fund === teamList[i - 1].fund) {
                 teamList[i].rank = i + 1 - count;
@@ -92,7 +93,9 @@ const Leaderboard = () => {
 
     useEffect(() => {
         let arr = unSortedList
-        arr?.sort((a,b) => b.amount - a.amount);
+        // if(arr.length > 0) {
+        //     arr?.sort((a,b) => b.amount - a.amount);
+        // }
         setTeamList(arr)
         // console.log(response.message[0].allTeams);
     }, [unSortedList])
