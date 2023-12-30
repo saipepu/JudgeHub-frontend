@@ -7,23 +7,13 @@ import BannerSecondary from "../Components/Banner_Secondary/BannerSecondary";
 import BannerTop1 from "../Components/Banner_Top1/BannerTop1";
 import BannerTop3 from "../Components/Banner_Top3/BannerTop3";
 import BannerTop10 from "../Components/Banner_Top10/BannerTop10";
-import { data } from "../data/teamListForLeaderBoard";
 import { NumberToString } from "../Functions/NumberToString";
 import { io } from "socket.io-client";
 import { getAllTeams } from "../api/getAllTeams";
 // https://ddi-socket-io.herokuapp.com
 // https://ddi-backend.herokuapp.com/api
 // https://ddi-pepu-backend-saipepu.vercel.app/api
-// const socket = io("http://localhost:3001", {
-//     withCredentials: true,
-//     extraHeaders: {
-//         "Access-Control-Allow-Credentials": "true",
-//         "Access-Control-Allow-Origin": "http://localhost:3001",
-//     },
-//     transports: ['websocket']
-// });
 const socket = io("https://ddi-pepu-backend-saipepu.vercel.app/api", {
-    // https://ddi-backend.herokuapp.com
     withCredentials: true,
     extraHeaders: {
         "Access-Control-Allow-Credentials": "true",
@@ -41,6 +31,8 @@ const Leaderboard = () => {
             console.log('changed');
             setChange((change) => change + 1);
         });
+
+        window.alert('This event was over since March, 2023.')
     }, []);
 
     useEffect(() => {
@@ -49,20 +41,20 @@ const Leaderboard = () => {
 
 
     useEffect(() => {
-        // if(unSortedList.length > 0){
-        //     let arr = unSortedList
-        //     arr.sort((a,b) => {
-        //       if(a.name < b.name) {
-        //           return -1;
-        //       }
-        //       if(a.name > b.name) {
-        //           return 1;
-        //       }
-        //       return 0;
-        //     })
-        //     arr.sort((a,b) => b.fund - a.fund);
-        //     setTeamList(arr)
-        // }
+        if(unSortedList.length > 0){
+            let arr = unSortedList
+            arr.sort((a,b) => {
+              if(a.name < b.name) {
+                  return -1;
+              }
+              if(a.name > b.name) {
+                  return 1;
+              }
+              return 0;
+            })
+            arr.sort((a,b) => b.fund - a.fund);
+            setTeamList(arr)
+        }
       }, [unSortedList])
 
 
@@ -93,12 +85,13 @@ const Leaderboard = () => {
 
     useEffect(() => {
         let arr = unSortedList
-        // if(arr.length > 0) {
-        //     arr?.sort((a,b) => b.amount - a.amount);
-        // }
+        if(arr.length > 0) {
+            arr?.sort((a,b) => b.amount - a.amount);
+        }
         setTeamList(arr)
         // console.log(response.message[0].allTeams);
     }, [unSortedList])
+
 
     return (
         <div className={styles.container}>
