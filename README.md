@@ -1,7 +1,7 @@
 ### JudgeHub
 This project is a real-time leaderboard scoring system for a startup pitching competition held by <a href="https://ddi.au.edu/en/home-en/" target="_blank">DDI program</a> from <a href="https://www.au.edu" target="_blank">Assumption University.</a>
 
-# This project was
+### This project was
 - built with Reactjs (frontend)
 - built with Nodejs and Expressjs (backend) <a href="https://github.com/saipepu/Judgehub-backend">JudgeHubBackend</a>
 
